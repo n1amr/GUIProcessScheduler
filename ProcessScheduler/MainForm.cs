@@ -20,6 +20,7 @@ namespace ProcessScheduler
     private void btn_Add_Click(object sender, EventArgs e)
     {
       NewProcessForm form = new NewProcessForm();
+      form.StartPosition = FormStartPosition.CenterParent;
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
