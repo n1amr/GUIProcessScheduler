@@ -45,6 +45,7 @@
       // 
       // dataGridView
       // 
+      this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Info;
       this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView.Location = new System.Drawing.Point(12, 151);
       this.dataGridView.Name = "dataGridView";
@@ -55,9 +56,10 @@
       // lbl
       // 
       this.lbl.AutoSize = true;
+      this.lbl.Font = new System.Drawing.Font("Tahoma", 10F);
       this.lbl.Location = new System.Drawing.Point(295, 24);
       this.lbl.Name = "lbl";
-      this.lbl.Size = new System.Drawing.Size(35, 13);
+      this.lbl.Size = new System.Drawing.Size(42, 17);
       this.lbl.TabIndex = 3;
       this.lbl.Text = "label1";
       // 
@@ -69,8 +71,11 @@
       this.Controls.Add(this.lbl);
       this.Controls.Add(this.dataGridView);
       this.Controls.Add(this.panel);
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "ResultForm";
-      this.Text = "ResultForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "Result";
       this.Resize += new System.EventHandler(this.ResultForm_Resize);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
       this.ResumeLayout(false);

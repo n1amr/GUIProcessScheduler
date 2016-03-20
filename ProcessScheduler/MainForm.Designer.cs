@@ -34,6 +34,7 @@
       this.chk_Preemptive = new System.Windows.Forms.CheckBox();
       this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.btn_RemoveAll = new System.Windows.Forms.Button();
       this.btn_MoveDown = new System.Windows.Forms.Button();
       this.btn_MoveUp = new System.Windows.Forms.Button();
       this.btn_Edit = new System.Windows.Forms.Button();
@@ -113,6 +114,7 @@
       // 
       // groupBox2
       // 
+      this.groupBox2.Controls.Add(this.btn_RemoveAll);
       this.groupBox2.Controls.Add(this.btn_MoveDown);
       this.groupBox2.Controls.Add(this.btn_MoveUp);
       this.groupBox2.Controls.Add(this.btn_Edit);
@@ -121,27 +123,38 @@
       this.groupBox2.Controls.Add(this.lstBox_Processes);
       this.groupBox2.Location = new System.Drawing.Point(12, 100);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(252, 243);
+      this.groupBox2.Size = new System.Drawing.Size(252, 199);
       this.groupBox2.TabIndex = 1;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Processes";
       // 
+      // btn_RemoveAll
+      // 
+      this.btn_RemoveAll.Enabled = false;
+      this.btn_RemoveAll.Location = new System.Drawing.Point(165, 107);
+      this.btn_RemoveAll.Name = "btn_RemoveAll";
+      this.btn_RemoveAll.Size = new System.Drawing.Size(75, 23);
+      this.btn_RemoveAll.TabIndex = 4;
+      this.btn_RemoveAll.Text = "Remove All";
+      this.btn_RemoveAll.UseVisualStyleBackColor = true;
+      this.btn_RemoveAll.Click += new System.EventHandler(this.btn_RemoveAll_Click);
+      // 
       // btn_MoveDown
       // 
-      this.btn_MoveDown.Location = new System.Drawing.Point(165, 136);
+      this.btn_MoveDown.Location = new System.Drawing.Point(167, 165);
       this.btn_MoveDown.Name = "btn_MoveDown";
       this.btn_MoveDown.Size = new System.Drawing.Size(75, 23);
-      this.btn_MoveDown.TabIndex = 5;
+      this.btn_MoveDown.TabIndex = 6;
       this.btn_MoveDown.Text = "Move Down";
       this.btn_MoveDown.UseVisualStyleBackColor = true;
       this.btn_MoveDown.Click += new System.EventHandler(this.btn_MoveDown_Click);
       // 
       // btn_MoveUp
       // 
-      this.btn_MoveUp.Location = new System.Drawing.Point(165, 107);
+      this.btn_MoveUp.Location = new System.Drawing.Point(167, 136);
       this.btn_MoveUp.Name = "btn_MoveUp";
       this.btn_MoveUp.Size = new System.Drawing.Size(75, 23);
-      this.btn_MoveUp.TabIndex = 4;
+      this.btn_MoveUp.TabIndex = 5;
       this.btn_MoveUp.Text = "Move Up";
       this.btn_MoveUp.UseVisualStyleBackColor = true;
       this.btn_MoveUp.Click += new System.EventHandler(this.btn_MoveUp_Click);
@@ -152,7 +165,7 @@
       this.btn_Edit.Location = new System.Drawing.Point(165, 49);
       this.btn_Edit.Name = "btn_Edit";
       this.btn_Edit.Size = new System.Drawing.Size(75, 23);
-      this.btn_Edit.TabIndex = 3;
+      this.btn_Edit.TabIndex = 2;
       this.btn_Edit.Text = "Edit";
       this.btn_Edit.UseVisualStyleBackColor = true;
       this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
@@ -163,7 +176,7 @@
       this.btn_Remove.Location = new System.Drawing.Point(165, 78);
       this.btn_Remove.Name = "btn_Remove";
       this.btn_Remove.Size = new System.Drawing.Size(75, 23);
-      this.btn_Remove.TabIndex = 2;
+      this.btn_Remove.TabIndex = 3;
       this.btn_Remove.Text = "Remove";
       this.btn_Remove.UseVisualStyleBackColor = true;
       this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
@@ -184,14 +197,14 @@
       this.lstBox_Processes.FormattingEnabled = true;
       this.lstBox_Processes.Location = new System.Drawing.Point(7, 20);
       this.lstBox_Processes.Name = "lstBox_Processes";
-      this.lstBox_Processes.Size = new System.Drawing.Size(152, 212);
+      this.lstBox_Processes.Size = new System.Drawing.Size(152, 173);
       this.lstBox_Processes.TabIndex = 0;
       // 
       // btn_Calculate
       // 
-      this.btn_Calculate.Location = new System.Drawing.Point(96, 355);
+      this.btn_Calculate.Location = new System.Drawing.Point(19, 305);
       this.btn_Calculate.Name = "btn_Calculate";
-      this.btn_Calculate.Size = new System.Drawing.Size(75, 23);
+      this.btn_Calculate.Size = new System.Drawing.Size(233, 34);
       this.btn_Calculate.TabIndex = 2;
       this.btn_Calculate.Text = "Calculate";
       this.btn_Calculate.UseVisualStyleBackColor = true;
@@ -199,13 +212,17 @@
       // 
       // MainForm
       // 
+      this.AcceptButton = this.btn_Calculate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(266, 381);
+      this.ClientSize = new System.Drawing.Size(266, 351);
       this.Controls.Add(this.btn_Calculate);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "MainForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "MainForm";
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
@@ -230,5 +247,6 @@
     private System.Windows.Forms.NumericUpDown numUpDn_Quantum;
     private System.Windows.Forms.Button btn_MoveDown;
     private System.Windows.Forms.Button btn_MoveUp;
+    private System.Windows.Forms.Button btn_RemoveAll;
   }
 }

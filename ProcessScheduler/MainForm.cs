@@ -22,14 +22,14 @@ namespace ProcessScheduler
       InitializeComponent();
       cmb_QueueType.SelectedIndex = 0;
 
-      for (int i = 1; i < 6; i++)
+      Random random = new Random(System.Environment.TickCount);
+      for (int i = 1; i <= 5; i++)
       {
-        Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
+        Process p = new Process(String.Format("P{0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
         lstBox_Processes.Items.Add(p);
       }
 
-
-      btn_Calculate_Click(this, null);
+      CheckListSize();
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
@@ -41,9 +41,8 @@ namespace ProcessScheduler
       {
         Process process = form.process;
         lstBox_Processes.Items.Add(process);
-        btn_Edit.Enabled = true;
-        btn_Remove.Enabled = true;
       }
+      CheckListSize();
     }
 
     private void btn_Edit_Click(object sender, EventArgs e)
@@ -64,15 +63,9 @@ namespace ProcessScheduler
     {
       int index = lstBox_Processes.SelectedIndex;
       if (index >= 0)
-      {
         lstBox_Processes.Items.RemoveAt(index);
 
-        if (lstBox_Processes.Items.Count == 0)
-        {
-          btn_Edit.Enabled = false;
-          btn_Remove.Enabled = false;
-        }
-      }
+      CheckListSize();
     }
 
     private void btn_Calculate_Click(object sender, EventArgs e)
@@ -98,10 +91,10 @@ namespace ProcessScheduler
           cpu.Insert(p);
 
         List<CPUScheduler.Execution> executionList = cpu.StartExecution();
-        List<Process> processes= new List<Process>();
+        List<Process> processes = new List<Process>();
         foreach (Process p in lstBox_Processes.Items)
           processes.Add(p);
-        
+
         ResultForm resultForm = new ResultForm(processes, executionList);
         resultForm.ShowDialog();
 
@@ -166,6 +159,24 @@ namespace ProcessScheduler
         lstBox_Processes.Items[index + 1] = temp;
         lstBox_Processes.SelectedIndex++;
       }
+    }
+
+    private void btn_RemoveAll_Click(object sender, EventArgs e)
+    {
+      while (lstBox_Processes.Items.Count != 0)
+        lstBox_Processes.Items.RemoveAt(0);
+      CheckListSize();
+    }
+
+    private void CheckListSize()
+    {
+      bool empty = lstBox_Processes.Items.Count == 0;
+
+      btn_Edit.Enabled = !empty;
+      btn_Remove.Enabled = !empty;
+      btn_RemoveAll.Enabled = !empty;
+      btn_MoveUp.Enabled = !empty;
+      btn_MoveDown.Enabled = !empty;
     }
   }
 }

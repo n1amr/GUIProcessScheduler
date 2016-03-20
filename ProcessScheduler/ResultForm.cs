@@ -99,14 +99,10 @@ namespace ProcessScheduler
       panel.Refresh();
 
       dataGridView.Left = 0;
-      //dataGridView.Width = this.Width -15;
-      dataGridView.Width = 742;
+      dataGridView.Width = this.Width - 15;
       dataGridView.Height = this.Height - dataGridView.Top - 40;
 
-      lbl.Text = dataGridView.Width.ToString();
-
-      lbl.Left = (this.Width - lbl.Width) / 2;
-      
+      lbl.Left = (this.Width - lbl.Width) / 2;      
     }
   }
 }
