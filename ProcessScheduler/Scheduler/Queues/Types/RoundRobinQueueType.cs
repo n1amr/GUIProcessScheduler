@@ -9,7 +9,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
   public class RoundRobinQueueType : QueueType
   {
     private int period;
-    
+
     public RoundRobinQueueType(int period)
     {
       this.period = period;
@@ -22,9 +22,9 @@ namespace ProcessScheduler.Scheduler.Queues.Types
 
     public override Queue.QueueNode add(Queue.QueueNode head, Process process)
     {
-      while (head.getNext() != null)
-        head = head.getNext();
-      head.setNext(new Queue.QueueNode(process));
+      while (head.Next != null)
+        head = head.Next;
+      head.Next = new Queue.QueueNode(process);
       return null;
     }
   }

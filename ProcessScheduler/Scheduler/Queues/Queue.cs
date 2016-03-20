@@ -21,12 +21,12 @@ namespace ProcessScheduler.Scheduler.Queues
     public void remove()
     {
       if (!isEmpty())
-        head = head.getNext();
+        head = head.Next;
     }
 
     public Process getFirst()
     {
-      return head.getProcess();
+      return head.Process;
     }
 
     public bool isEmpty()
@@ -77,7 +77,7 @@ namespace ProcessScheduler.Scheduler.Queues
       {
         get
         {
-          return current.getProcess();
+          return current.Process;
         }
       }
 
@@ -94,15 +94,15 @@ namespace ProcessScheduler.Scheduler.Queues
       {
         front = f;
         althead = new QueueNode(null);
-        althead.setNext(f);
+        althead.Next = f;
         current = althead;
       }
 
       public bool MoveNext()
       {
-        if (current != null && current.getNext() != null)
+        if (current != null && current.Next != null)
         {
-          current = current.getNext();
+          current = current.Next;
           return true;
         }
         else
@@ -126,34 +126,13 @@ namespace ProcessScheduler.Scheduler.Queues
 
     public class QueueNode
     {
-      private Process process;
-      private QueueNode next;
+      public Process Process { get; set; }
+      public QueueNode Next { get; set; }
 
-      public QueueNode(Process process)
+      public QueueNode(Process Process)
       {
-        this.process = process;
+        this.Process = Process;
       }
-
-      public Process getProcess()
-      {
-        return process;
-      }
-
-      public void setProcess(Process process)
-      {
-        this.process = process;
-      }
-
-      public QueueNode getNext()
-      {
-        return next;
-      }
-
-      public void setNext(QueueNode next)
-      {
-        this.next = next;
-      }
-
     }
 
   }
