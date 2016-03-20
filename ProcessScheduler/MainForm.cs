@@ -22,14 +22,14 @@ namespace ProcessScheduler
       InitializeComponent();
       processes = new List<Process>();
 
-      for (int i = 0; i < 5; i++)
-      {
-        Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
-        processes.Add(p);
-        lstBox_Processes.Items.Add(p.getProcessName());
-      }
+      //for (int i = 0; i < 5; i++)
+      //{
+      //  Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
+      //  processes.Add(p);
+      //  lstBox_Processes.Items.Add(p.getProcessName());
+      //}
 
-      btn_Calculate_Click(this,null);
+      //btn_Calculate_Click(this, null);
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
@@ -42,8 +42,28 @@ namespace ProcessScheduler
         Process process = form.process;
         lstBox_Processes.Items.Add(process.getProcessName());
         processes.Add(process);
+        btn_Edit.Enabled = true;
+        btn_Remove.Enabled = true;
       }
     }
+
+    private void btn_Edit_Click(object sender, EventArgs e)
+    {
+      int index = lstBox_Processes.SelectedIndex;
+      if (index >= 0)
+      {
+        NewProcessForm form = new NewProcessForm(processes[index]);
+        form.StartPosition = FormStartPosition.CenterParent;
+        form.ShowDialog();
+        if (form.DialogResult == DialogResult.OK)
+        {
+          Process process = form.getProcess();
+          lstBox_Processes.Items[index] = process.getProcessName();
+          processes[index] = process;
+        }
+      }
+    }
+
 
     private void btn_Remove_Click(object sender, EventArgs e)
     {
@@ -52,6 +72,12 @@ namespace ProcessScheduler
       {
         lstBox_Processes.Items.RemoveAt(index);
         processes.RemoveAt(index);
+
+        if (processes.Count == 0)
+        {
+          btn_Edit.Enabled = false;
+          btn_Remove.Enabled = false;
+        }
       }
     }
 

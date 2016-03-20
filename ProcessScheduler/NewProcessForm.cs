@@ -13,10 +13,24 @@ namespace ProcessScheduler
   public partial class NewProcessForm : Form
   {
     public Process process;
+    
     public NewProcessForm()
     {
       InitializeComponent();
       process = new Process(0);
+    }
+    
+    public NewProcessForm(Process process, bool priority = false)
+    {
+      InitializeComponent();
+      this.process = process;
+
+      txtBox_ProcessName.Text = process.getProcessName();
+      numUpDn_BurstTime.Value = process.getduration();
+      numUpDn_Prioriity.Value = process.getPriority();
+      numUpDn_ArrivalTime.Value = process.getArrivalTime();
+
+      numUpDn_Prioriity.Enabled = priority;
     }
 
     private void btn_Ok_Click(object sender, EventArgs e)
@@ -37,7 +51,7 @@ namespace ProcessScheduler
 
     private void numUpDn_ArrivalTime_ValueChanged(object sender, EventArgs e)
     {
-      // TODO
+      process.setArrivalTime((int)numUpDn_ArrivalTime.Value);
     }
 
     private void numUpDn_Prioriity_ValueChanged(object sender, EventArgs e)

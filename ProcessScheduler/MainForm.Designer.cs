@@ -32,6 +32,7 @@
       this.chk_Preemptive = new System.Windows.Forms.CheckBox();
       this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.btn_Edit = new System.Windows.Forms.Button();
       this.btn_Remove = new System.Windows.Forms.Button();
       this.btn_Add = new System.Windows.Forms.Button();
       this.lstBox_Processes = new System.Windows.Forms.ListBox();
@@ -77,6 +78,7 @@
       // 
       // groupBox2
       // 
+      this.groupBox2.Controls.Add(this.btn_Edit);
       this.groupBox2.Controls.Add(this.btn_Remove);
       this.groupBox2.Controls.Add(this.btn_Add);
       this.groupBox2.Controls.Add(this.lstBox_Processes);
@@ -87,9 +89,21 @@
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Processes";
       // 
+      // btn_Edit
+      // 
+      this.btn_Edit.Enabled = false;
+      this.btn_Edit.Location = new System.Drawing.Point(165, 49);
+      this.btn_Edit.Name = "btn_Edit";
+      this.btn_Edit.Size = new System.Drawing.Size(75, 23);
+      this.btn_Edit.TabIndex = 3;
+      this.btn_Edit.Text = "Edit";
+      this.btn_Edit.UseVisualStyleBackColor = true;
+      this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
+      // 
       // btn_Remove
       // 
-      this.btn_Remove.Location = new System.Drawing.Point(164, 49);
+      this.btn_Remove.Enabled = false;
+      this.btn_Remove.Location = new System.Drawing.Point(165, 78);
       this.btn_Remove.Name = "btn_Remove";
       this.btn_Remove.Size = new System.Drawing.Size(75, 23);
       this.btn_Remove.TabIndex = 2;
@@ -152,5 +166,6 @@
     private System.Windows.Forms.Button btn_Remove;
     private System.Windows.Forms.Button btn_Add;
     private System.Windows.Forms.Button btn_Calculate;
+    private System.Windows.Forms.Button btn_Edit;
   }
 }

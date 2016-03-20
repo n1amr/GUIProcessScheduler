@@ -115,9 +115,19 @@
       // 
       this.numUpDn_Prioriity.Enabled = false;
       this.numUpDn_Prioriity.Location = new System.Drawing.Point(96, 87);
+      this.numUpDn_Prioriity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
       this.numUpDn_Prioriity.Name = "numUpDn_Prioriity";
       this.numUpDn_Prioriity.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_Prioriity.TabIndex = 6;
+      this.numUpDn_Prioriity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
       this.numUpDn_Prioriity.ValueChanged += new System.EventHandler(this.numUpDn_Prioriity_ValueChanged);
       // 
       // btn_Ok
