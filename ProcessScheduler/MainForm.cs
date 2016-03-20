@@ -21,6 +21,13 @@ namespace ProcessScheduler
     {
       InitializeComponent();
       processes = new List<Process>();
+
+      for (int i = 0; i < 5; i++)
+      {
+        Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
+        processes.Add(p);
+        lstBox_Processes.Items.Add(p.getProcessName());
+      }
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
@@ -39,7 +46,6 @@ namespace ProcessScheduler
     private void btn_Remove_Click(object sender, EventArgs e)
     {
       int index = lstBox_Processes.SelectedIndex;
-      MessageBox.Show(index.ToString());
       if (index >= 0)
       {
         lstBox_Processes.Items.RemoveAt(index);
@@ -52,16 +58,20 @@ namespace ProcessScheduler
       CPUScheduler cpu = null;
       int pid = 0;
 
-      if (cmb_QueueType.SelectedItem != null)
+      //if (cmb_QueueType.SelectedItem != null)
       {
-        if (cmb_QueueType.SelectedItem.ToString() == "FCFS")
+        //if (cmb_QueueType.SelectedItem.ToString() == "FCFS")
         {
-          cpu = new CPUScheduler(QueueType.FCFS, chk_Preemptive.Checked);
-          cpu.makeInsertion(processes[0], 0);
-          cpu.printQueue();
+          //cpu = new CPUScheduler(QueueType.FCFS, chk_Preemptive.Checked);
+          cpu = new CPUScheduler(QueueType.FCFS, false);
+
+          foreach (Process p in processes)
+          {
+            cpu.makeInsertion(p, p.getArrivalTime());
+          }
         }
       }
-
+      List<CPUScheduler.Execution> executuinList = cpu.startExecution();
     }
   }
 }

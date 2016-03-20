@@ -32,12 +32,94 @@ namespace ProcessScheduler.Scheduler
     }
 
 
-    public void printQueue() {
-    foreach(Process process in queue) {
-      Console.WriteLine("    " + process);
+    public void printQueue()
+    {
+      foreach (Process process in queue)
+      {
+        Console.WriteLine("    " + process);
+      }
     }
-  }
 
+
+    public List<Execution> startExecution()
+    {
+      insertions.Sort();
+
+      foreach (Insertion i in insertions)
+      {
+        Console.WriteLine(i.getProcess());
+      }
+
+      Process runningProcess = null;
+      Execution execution = null;
+      for (int t = 0; insertions.Count != 0 || !queue.isEmpty() || runningProcess != null; t++)
+      {
+        Console.WriteLine("<<<<  Time #" + t + "  >>>>");
+
+        // Add processes
+        while (insertions.Count != 0 && t == insertions[0].getTimeOfInsertion())
+        {
+          processes.Add(insertions[0].getProcess());
+          queue.add(insertions[0].getProcess());
+          insertions.RemoveAt(0);
+        }
+
+        // Select Process
+        if (!queue.isEmpty())
+        {
+          if (runningProcess == null)
+          {
+            runningProcess = queue.getFirst();
+            queue.remove();
+            execution = new Execution(runningProcess, t, t);
+          }
+          else if (preemptive)
+          {
+            bool switchProcess = false;
+
+            if (queue.getQueueType() == QueueType.FCFS)
+            {
+              switchProcess = false;
+              // TODO
+              //} else if (queue.getQueueType() == QueueType.SHORTEST_REMAINING_TIME) {
+              //  switchProcess = (runningProcess.getRemainingTime() > queue.getFirst().getRemainingTime());
+              //} else if (queue.getQueueType() == QueueType.PRIORITY) {
+              //  switchProcess = (runningProcess.getPriority() > queue.getFirst().getPriority());
+              //} else if (queue.getQueueType() instanceof RounRobinQueueType) {
+              //  switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RounRobinQueueType) queue.getQueueType()).getPeriod();
+            }
+
+            if (switchProcess)
+            {
+              executionList.Add(execution);
+              queue.add(runningProcess);
+              runningProcess = queue.getFirst();
+              queue.remove();
+              execution = new Execution(runningProcess, t, t);
+            }
+          }
+        }
+
+        Console.WriteLine(" -> " + runningProcess);
+        printQueue();
+
+        // Execute unit time of a process
+        if (runningProcess != null)
+        {
+          runningProcess.decrementRemiainingTime();
+          execution.setEndTime(execution.getEndTime() + 1);
+
+          // Remove process from queue and add an execution entry
+          if (runningProcess.isFinished())
+          {
+            executionList.Add(execution);
+            runningProcess = null;
+            execution = null;
+          }
+        }
+      }
+      return executionList;
+    }
     public class Insertion : IComparable<Insertion>
     {
       private Process process;

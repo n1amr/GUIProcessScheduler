@@ -13,17 +13,20 @@ namespace ProcessScheduler
     private int duration;
     private int remainingTime;
     private int priority;
+    private int arrivalTime;
 
-    public Process(String processName, int pid, int time, int priority)
+    public Process(String processName, int pid, int time, int priority, int arrivalTime)
     {
       this.processName = processName;
       this.pid = pid;
       this.duration = time;
       this.priority = priority;
       remainingTime = duration;
+      this.arrivalTime = arrivalTime;
     }
 
-    public Process(int pid) : this(null, pid, 0, -1)
+    public Process(int pid)
+      : this(null, pid, 0, -1, 0)
     {
     }
 
@@ -83,10 +86,20 @@ namespace ProcessScheduler
     {
       this.priority = priority;
     }
+    public int getArrivalTime()
+    {
+      return arrivalTime;
+    }
+
+    public void setArrivalTime(int arrivalTime)
+    {
+      this.arrivalTime = arrivalTime;
+    }
 
     public override String ToString()
     {
-      return String.Format("Process\n\tname: {0}\n\tPID: {1}\n\tduration: {2}\n\tremaining_time: {3}\n\tpriority: {4}", processName, pid, duration, remainingTime, priority);
+      //return String.Format("Process\n\tname: {0}\n\tPID: {1}\n\tduration: {2}\n\tremaining_time: {3}\n\tpriority: {4}", processName, pid, duration, remainingTime, priority);
+      return String.Format("Process\tname: {0}\tPID: {1}\tduration: {2}\tremaining_time: {3}\tpriority: {4}", processName, pid, duration, remainingTime, priority);
     }
 
 

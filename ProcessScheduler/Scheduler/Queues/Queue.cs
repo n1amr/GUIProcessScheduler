@@ -70,6 +70,7 @@ namespace ProcessScheduler.Scheduler.Queues
 
     private class Iterator : IEnumerator<Process>
     {
+      private QueueNode althead;
       private QueueNode front;
       private QueueNode current;
       public virtual Process Current
@@ -92,7 +93,9 @@ namespace ProcessScheduler.Scheduler.Queues
       public Iterator(QueueNode f)
       {
         front = f;
-        current = front;
+        althead = new QueueNode(null);
+        althead.setNext(f);
+        current = althead;
       }
 
       public bool MoveNext()
