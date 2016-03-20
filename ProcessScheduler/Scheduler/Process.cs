@@ -8,21 +8,21 @@ namespace ProcessScheduler
 {
   public class Process
   {
-    private String processName;
-    private int pid;
-    private int duration;
-    private int remainingTime;
-    private int priority;
-    private int arrivalTime;
+    public String Name { get; set; }
+    public int PID { get; set; }
+    public int BurstTime { get; set; }
+    public int remainingTime { get; private set; }
+    public int Priority { get; set; }
+    public int ArrivalTime { get; set; }
 
     public Process(String processName, int pid, int time, int priority, int arrivalTime)
     {
-      this.processName = processName;
-      this.pid = pid;
-      this.duration = time;
-      this.priority = priority;
-      remainingTime = duration;
-      this.arrivalTime = arrivalTime;
+      this.Name = processName;
+      this.PID = pid;
+      this.BurstTime = time;
+      this.Priority = priority;
+      this.remainingTime = BurstTime;
+      this.ArrivalTime = arrivalTime;
     }
 
     public Process(int pid)
@@ -36,7 +36,7 @@ namespace ProcessScheduler
         remainingTime--;
     }
 
-    public int getRemainingTime()
+    public int GetRemainingTime()
     {
       return remainingTime;
     }
@@ -48,58 +48,58 @@ namespace ProcessScheduler
 
     public void setDuration(int time)
     {
-      this.duration = time;
-      remainingTime = duration;
+      this.BurstTime = time;
+      remainingTime = BurstTime;
     }
 
     public int getduration()
     {
-      return duration;
+      return BurstTime;
     }
 
     public String getProcessName()
     {
-      return processName;
+      return Name;
     }
 
     public void setProcessName(String processName)
     {
-      this.processName = processName;
+      this.Name = processName;
     }
 
     public int getPid()
     {
-      return pid;
+      return PID;
     }
 
     public void setPid(int pid)
     {
-      this.pid = pid;
+      this.PID = pid;
     }
 
     public int getPriority()
     {
-      return priority;
+      return Priority;
     }
 
     public void setPriority(int priority)
     {
-      this.priority = priority;
+      this.Priority = priority;
     }
     public int getArrivalTime()
     {
-      return arrivalTime;
+      return ArrivalTime;
     }
 
     public void setArrivalTime(int arrivalTime)
     {
-      this.arrivalTime = arrivalTime;
+      this.ArrivalTime = arrivalTime;
     }
 
     public override String ToString()
     {
       //return String.Format("Process\n\tname: {0}\n\tPID: {1}\n\tduration: {2}\n\tremaining_time: {3}\n\tpriority: {4}", processName, pid, duration, remainingTime, priority);
-      return String.Format("Process\tname: {0}\tPID: {1}\tduration: {2}\tremaining_time: {3}\tpriority: {4}", processName, pid, duration, remainingTime, priority);
+      return String.Format("Process\tname: {0}\tPID: {1}\tduration: {2}\tremaining_time: {3}\tpriority: {4}", Name, PID, BurstTime, remainingTime, Priority);
     }
 
 

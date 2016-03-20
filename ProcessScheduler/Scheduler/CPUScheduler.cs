@@ -83,7 +83,7 @@ namespace ProcessScheduler.Scheduler
             }
             else if (queue.getQueueType() == QueueType.SHORTEST_REMAINING_TIME)
             {
-              switchProcess = (runningProcess.getRemainingTime() > queue.getFirst().getRemainingTime());
+              switchProcess = (runningProcess.GetRemainingTime() > queue.getFirst().GetRemainingTime());
             }
             else if (queue.getQueueType() == QueueType.PRIORITY)
             {
