@@ -28,7 +28,7 @@ namespace ProcessScheduler.Scheduler
 
     public void Insert(Process process)
     {
-      process.ResetRemainingTime();
+      process.ResetCalculations();
       insertions.Add(new Insertion(process, process.ArrivalTime));
     }
 
@@ -46,16 +46,11 @@ namespace ProcessScheduler.Scheduler
     {
       insertions.Sort();
 
-      foreach (Insertion i in insertions)
-      {
-        Console.WriteLine(i.Process);
-      }
-
       Process runningProcess = null;
       Execution execution = null;
       for (int t = 0; insertions.Count != 0 || !queue.isEmpty() || runningProcess != null; t++)
       {
-        Console.WriteLine("<<<<  Time #" + t + "  >>>>");
+        //Console.WriteLine("<<<<  Time #" + t + "  >>>>");
 
         // Add processes
         while (insertions.Count != 0 && t == insertions[0].InsertionTime)
@@ -98,6 +93,8 @@ namespace ProcessScheduler.Scheduler
             if (switchProcess)
             {
               executionList.Add(execution);
+              runningProcess.AddExecution(execution);
+
               queue.add(runningProcess);
               runningProcess = queue.getFirst();
               queue.remove();
@@ -106,8 +103,8 @@ namespace ProcessScheduler.Scheduler
           }
         }
 
-        Console.WriteLine(" -> " + runningProcess);
-        printQueue();
+        //Console.WriteLine(" -> " + runningProcess);
+        //printQueue();
 
         // Execute unit time of a process
         if (runningProcess != null)
@@ -119,6 +116,8 @@ namespace ProcessScheduler.Scheduler
           if (runningProcess.isFinished())
           {
             executionList.Add(execution);
+            runningProcess.AddExecution(execution);
+
             runningProcess = null;
             execution = null;
           }

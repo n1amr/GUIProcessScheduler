@@ -22,7 +22,7 @@ namespace ProcessScheduler
       InitializeComponent();
       cmb_QueueType.SelectedIndex = 0;
 
-      for (int i = 0; i < 5; i++)
+      for (int i = 1; i < 6; i++)
       {
         Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
         lstBox_Processes.Items.Add(p);
@@ -101,6 +101,15 @@ namespace ProcessScheduler
         ResultForm resultForm = new ResultForm(executionList);
         resultForm.Show();
 
+      }
+
+      foreach (Process p in lstBox_Processes.Items)
+      {
+        Console.WriteLine(p);
+        Console.WriteLine("Arrival: " + p.ArrivalTime);
+        Console.WriteLine("Departure: " + p.GetDepartureTime());
+        Console.WriteLine("TurnAround: " + p.GetTurnAroundTime());
+        Console.WriteLine("Waiting: " + p.GetWaitingTime());
       }
     }
 
