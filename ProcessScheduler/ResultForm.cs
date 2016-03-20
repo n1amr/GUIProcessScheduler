@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using ProcessScheduler.Scheduler;
 using ProcessScheduler.Scheduler.Queues;
 using ProcessScheduler.Scheduler.Queues.Types;
@@ -31,12 +32,17 @@ namespace ProcessScheduler
 
       DataTable dataTable = new DataTable();
       dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
-      dataTable.Columns.Add(new DataColumn("PID", typeof(int)));
-      dataTable.Columns.Add(new DataColumn("WaitingTime", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Burst time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Arrival time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Departure time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Turn around time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Waiting time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Priority", typeof(int)));
+      
 
       foreach (Process p in processes)
       {
-        dataTable.Rows.Add(new object[] { p.Name, p.PID, p.GetWaitingTime() });
+        dataTable.Rows.Add(new object[] { p.Name,p.BurstTime, p.ArrivalTime,p.GetDepartureTime(),p.GetTurnAroundTime(), p.GetWaitingTime() ,p.Priority});
       }
 
       dataGridView1.DataSource = dataTable;
@@ -80,9 +86,7 @@ namespace ProcessScheduler
 
     private void ResultForm_Resize(object sender, EventArgs e)
     {
-      //panel.Height = this.Height;
       panel.Width = this.Width;
-      //panel.Top = 0;
       panel.Left = 0;
       panel.Refresh();
     }
