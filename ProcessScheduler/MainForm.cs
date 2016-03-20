@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProcessScheduler
 {
-  public partial class Form1 : Form
+  public partial class Scheduler : Form
   {
-    public Form1()
+    public Scheduler()
     {
       InitializeComponent();
     }
