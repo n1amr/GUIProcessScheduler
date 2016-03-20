@@ -46,6 +46,7 @@ namespace ProcessScheduler
     public void setDuration(int time)
     {
       this.duration = time;
+      remainingTime = duration;
     }
 
     public int getduration()
@@ -85,7 +86,7 @@ namespace ProcessScheduler
 
     public override String ToString()
     {
-      return String.Format("Process: { name: %s, PID: %d, duration: %d, remaining_time: %d, priority: %d }", processName, pid, duration, remainingTime, priority);
+      return String.Format("Process\n\tname: {0}\n\tPID: {1}\n\tduration: {2}\n\tremaining_time: {3}\n\tpriority: {4}", processName, pid, duration, remainingTime, priority);
     }
 
 
