@@ -42,13 +42,13 @@ namespace ProcessScheduler.Scheduler
     }
 
 
-    public List<Execution> startExecution()
+    public List<Execution> StartExecution()
     {
       insertions.Sort();
 
       foreach (Insertion i in insertions)
       {
-        Console.WriteLine(i.getProcess());
+        Console.WriteLine(i.Process);
       }
 
       Process runningProcess = null;
@@ -58,10 +58,10 @@ namespace ProcessScheduler.Scheduler
         Console.WriteLine("<<<<  Time #" + t + "  >>>>");
 
         // Add processes
-        while (insertions.Count != 0 && t == insertions[0].getTimeOfInsertion())
+        while (insertions.Count != 0 && t == insertions[0].InsertionTime)
         {
-          processes.Add(insertions[0].getProcess());
-          queue.add(insertions[0].getProcess());
+          processes.Add(insertions[0].Process);
+          queue.add(insertions[0].Process);
           insertions.RemoveAt(0);
         }
 
@@ -92,7 +92,7 @@ namespace ProcessScheduler.Scheduler
             }
             else if (queue.getQueueType() is RoundRobinQueueType)
             {
-              switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RoundRobinQueueType)queue.getQueueType()).getPeriod();
+              switchProcess = (execution.EndTime - execution.StartTime) >= ((RoundRobinQueueType)queue.getQueueType()).getPeriod();
             }
 
             if (switchProcess)
@@ -113,7 +113,7 @@ namespace ProcessScheduler.Scheduler
         if (runningProcess != null)
         {
           runningProcess.decrementRemiainingTime();
-          execution.setEndTime(execution.getEndTime() + 1);
+          execution.EndTime++;
 
           // Remove process from queue and add an execution entry
           if (runningProcess.isFinished())
@@ -128,87 +128,37 @@ namespace ProcessScheduler.Scheduler
     }
     public class Insertion : IComparable<Insertion>
     {
-      private Process process;
-      private int timeOfInsertion;
+      public Process Process { get; set; }
+      public int InsertionTime { get; set; }
 
-      public Insertion(Process process, int timeOfInsertion)
+      public Insertion(Process Process, int TimeOfInsertion)
       {
-        this.process = process;
-        this.timeOfInsertion = timeOfInsertion;
+        this.Process = Process;
+        this.InsertionTime = TimeOfInsertion;
       }
 
       public int CompareTo(Insertion o)
       {
-        return timeOfInsertion - o.timeOfInsertion;
-      }
-
-      public Process getProcess()
-      {
-        return process;
-      }
-
-      public void setProcess(Process process)
-      {
-        this.process = process;
-      }
-
-      public int getTimeOfInsertion()
-      {
-        return timeOfInsertion;
-      }
-
-      public void setTimeOfInsertion(int timeOfInsertion)
-      {
-        this.timeOfInsertion = timeOfInsertion;
+        return InsertionTime - o.InsertionTime;
       }
     }
 
     public class Execution : IComparable<Execution>
     {
-      private Process process;
-      private int startTime;
-      private int endTime;
+      public Process Process { get; set; }
+      public int StartTime { get; set; }
+      public int EndTime { get; set; }
 
-      public Execution(Process process, int startTime, int endTime)
+      public Execution(Process Process, int StartTime, int EndTime)
       {
-        this.process = process;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.Process = Process;
+        this.StartTime = StartTime;
+        this.EndTime = EndTime;
       }
 
       public int CompareTo(Execution o)
       {
-        return startTime - o.startTime;
-      }
-
-      public Process getProcess()
-      {
-        return process;
-      }
-
-      public void setProcess(Process process)
-      {
-        this.process = process;
-      }
-
-      public int getStartTime()
-      {
-        return startTime;
-      }
-
-      public void setStartTime(int startTime)
-      {
-        this.startTime = startTime;
-      }
-
-      public int getEndTime()
-      {
-        return endTime;
-      }
-
-      public void setEndTime(int endTime)
-      {
-        this.endTime = endTime;
+        return StartTime - o.StartTime;
       }
     }
   }

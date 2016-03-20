@@ -114,7 +114,7 @@ namespace ProcessScheduler
         {
           cpu.Insert(p);
         }
-        List<CPUScheduler.Execution> executionList = cpu.startExecution();
+        List<CPUScheduler.Execution> executionList = cpu.StartExecution();
         ResultForm resultForm = new ResultForm(executionList);
         resultForm.Show();
 

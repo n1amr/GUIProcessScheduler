@@ -23,7 +23,7 @@ namespace ProcessScheduler
       this.executionList = executionList;
       foreach (CPUScheduler.Execution exec in executionList)
       {
-        totalTime += exec.getEndTime() - exec.getStartTime();
+        totalTime += exec.EndTime - exec.StartTime;
       }
       ResultForm_Resize(this, null);
     }
@@ -42,7 +42,7 @@ namespace ProcessScheduler
         foreach (CPUScheduler.Execution exec in executionList)
         {
           int height = panel.Height * 50 / 100;
-          int width = (panel.Width * 8 / 10) * (exec.getEndTime() - exec.getStartTime()) / totalTime;
+          int width = (panel.Width * 8 / 10) * (exec.EndTime - exec.StartTime) / totalTime;
           Point leftBottom = new Point(leftTop.X, leftTop.Y + height);
           Point rightBottom = new Point(leftTop.X + width, leftTop.Y + height);
           Point rightTop = new Point(leftTop.X + width, leftTop.Y);
@@ -50,8 +50,8 @@ namespace ProcessScheduler
           Point namePosition = centerPoint;
           Point timePosition = rightBottom;
 
-          g.DrawString(exec.getProcess().Name, this.Font, brush, namePosition, sf);
-          g.DrawString(exec.getEndTime().ToString(), this.Font, brush, timePosition, sf);
+          g.DrawString(exec.Process.Name, this.Font, brush, namePosition, sf);
+          g.DrawString(exec.EndTime.ToString(), this.Font, brush, timePosition, sf);
 
           g.DrawLine(pen, leftTop, leftBottom);
           g.DrawLine(pen, rightTop, rightBottom);
