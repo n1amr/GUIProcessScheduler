@@ -71,7 +71,9 @@ namespace ProcessScheduler
           }
         }
       }
-      List<CPUScheduler.Execution> executuinList = cpu.startExecution();
+      List<CPUScheduler.Execution> executionList = cpu.startExecution();
+      ResultForm resultForm = new ResultForm(executionList);
+      resultForm.Show();
     }
   }
 }
