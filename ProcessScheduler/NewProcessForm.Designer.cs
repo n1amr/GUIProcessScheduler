@@ -127,6 +127,7 @@
       // 
       // btn_Cancel
       // 
+      this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.btn_Cancel.Location = new System.Drawing.Point(117, 123);
       this.btn_Cancel.Name = "btn_Cancel";
       this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -134,10 +135,12 @@
       this.btn_Cancel.Text = "Cancel";
       this.btn_Cancel.UseVisualStyleBackColor = true;
       // 
-      // Scheduler
+      // NewProcessForm
       // 
+      this.AcceptButton = this.btn_Ok;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.CancelButton = this.btn_Cancel;
       this.ClientSize = new System.Drawing.Size(227, 158);
       this.Controls.Add(this.btn_Cancel);
       this.Controls.Add(this.btn_Ok);
@@ -149,7 +152,7 @@
       this.Controls.Add(this.numUpDn_BurstTime);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.txtBox_ProcessName);
-      this.Name = "Scheduler";
+      this.Name = "NewProcessForm";
       this.Text = "Process Scheduler";
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_BurstTime)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_ArrivalTime)).EndInit();

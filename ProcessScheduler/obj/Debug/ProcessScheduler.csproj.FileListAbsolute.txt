@@ -7,3 +7,4 @@ D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.exe
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.pdb
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.NewProcessForm.resources
+D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.MainForm.resources
