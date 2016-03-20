@@ -42,7 +42,7 @@ namespace ProcessScheduler
       if (form.DialogResult == DialogResult.OK)
       {
         Process process = form.process;
-        lstBox_Processes.Items.Add(process.Name);
+        lstBox_Processes.Items.Add(process);
         processes.Add(process);
         btn_Edit.Enabled = true;
         btn_Remove.Enabled = true;
@@ -147,6 +147,32 @@ namespace ProcessScheduler
 
       chk_Preemptive.Enabled = queue_type == 1 || queue_type == 2;
       numUpDn_Quantum.Enabled = queue_type == 3;
+    }
+
+    private void btn_MoveUp_Click(object sender, EventArgs e)
+    {
+      int index = lstBox_Processes.SelectedIndex;
+      if (index > 0)
+      {
+
+        object temp = lstBox_Processes.Items[index];
+        lstBox_Processes.Items[index] = lstBox_Processes.Items[index - 1];
+        lstBox_Processes.Items[index - 1] = temp;
+
+      }
+      lstBox_Processes.SelectedIndex--;
+    }
+
+    private void btn_MoveDown_Click(object sender, EventArgs e)
+    {
+      int index = lstBox_Processes.SelectedIndex;
+      if (index + 1 < lstBox_Processes.Items.Count)
+      {
+        object temp = lstBox_Processes.Items[index];
+        lstBox_Processes.Items[index] = lstBox_Processes.Items[index +1];
+        lstBox_Processes.Items[index + 1] = temp;
+      }
+      lstBox_Processes.SelectedIndex++;
     }
   }
 }

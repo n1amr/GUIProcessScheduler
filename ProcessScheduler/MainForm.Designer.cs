@@ -29,6 +29,8 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.label1 = new System.Windows.Forms.Label();
+      this.numUpDn_Quantum = new System.Windows.Forms.NumericUpDown();
       this.chk_Preemptive = new System.Windows.Forms.CheckBox();
       this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -37,11 +39,11 @@
       this.btn_Add = new System.Windows.Forms.Button();
       this.lstBox_Processes = new System.Windows.Forms.ListBox();
       this.btn_Calculate = new System.Windows.Forms.Button();
-      this.numUpDn_Quantum = new System.Windows.Forms.NumericUpDown();
-      this.label1 = new System.Windows.Forms.Label();
+      this.btn_MoveUp = new System.Windows.Forms.Button();
+      this.btn_MoveDown = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
-      this.groupBox2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).BeginInit();
+      this.groupBox2.SuspendLayout();
       this.SuspendLayout();
       // 
       // groupBox1
@@ -56,6 +58,22 @@
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Queue Type";
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(122, 55);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(51, 13);
+      this.label1.TabIndex = 3;
+      this.label1.Text = "Quantum";
+      // 
+      // numUpDn_Quantum
+      // 
+      this.numUpDn_Quantum.Location = new System.Drawing.Point(179, 53);
+      this.numUpDn_Quantum.Name = "numUpDn_Quantum";
+      this.numUpDn_Quantum.Size = new System.Drawing.Size(67, 20);
+      this.numUpDn_Quantum.TabIndex = 2;
       // 
       // chk_Preemptive
       // 
@@ -85,6 +103,8 @@
       // 
       // groupBox2
       // 
+      this.groupBox2.Controls.Add(this.btn_MoveDown);
+      this.groupBox2.Controls.Add(this.btn_MoveUp);
       this.groupBox2.Controls.Add(this.btn_Edit);
       this.groupBox2.Controls.Add(this.btn_Remove);
       this.groupBox2.Controls.Add(this.btn_Add);
@@ -130,6 +150,7 @@
       // 
       // lstBox_Processes
       // 
+      this.lstBox_Processes.DisplayMember = "Name";
       this.lstBox_Processes.FormattingEnabled = true;
       this.lstBox_Processes.Location = new System.Drawing.Point(7, 20);
       this.lstBox_Processes.Name = "lstBox_Processes";
@@ -146,21 +167,25 @@
       this.btn_Calculate.UseVisualStyleBackColor = true;
       this.btn_Calculate.Click += new System.EventHandler(this.btn_Calculate_Click);
       // 
-      // numUpDn_Quantum
+      // btn_MoveUp
       // 
-      this.numUpDn_Quantum.Location = new System.Drawing.Point(179, 53);
-      this.numUpDn_Quantum.Name = "numUpDn_Quantum";
-      this.numUpDn_Quantum.Size = new System.Drawing.Size(67, 20);
-      this.numUpDn_Quantum.TabIndex = 2;
+      this.btn_MoveUp.Location = new System.Drawing.Point(165, 107);
+      this.btn_MoveUp.Name = "btn_MoveUp";
+      this.btn_MoveUp.Size = new System.Drawing.Size(75, 23);
+      this.btn_MoveUp.TabIndex = 4;
+      this.btn_MoveUp.Text = "Move Up";
+      this.btn_MoveUp.UseVisualStyleBackColor = true;
+      this.btn_MoveUp.Click += new System.EventHandler(this.btn_MoveUp_Click);
       // 
-      // label1
+      // btn_MoveDown
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(122, 55);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(51, 13);
-      this.label1.TabIndex = 3;
-      this.label1.Text = "Quantum";
+      this.btn_MoveDown.Location = new System.Drawing.Point(165, 136);
+      this.btn_MoveDown.Name = "btn_MoveDown";
+      this.btn_MoveDown.Size = new System.Drawing.Size(75, 23);
+      this.btn_MoveDown.TabIndex = 5;
+      this.btn_MoveDown.Text = "Move Down";
+      this.btn_MoveDown.UseVisualStyleBackColor = true;
+      this.btn_MoveDown.Click += new System.EventHandler(this.btn_MoveDown_Click);
       // 
       // MainForm
       // 
@@ -174,8 +199,8 @@
       this.Text = "MainForm";
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
-      this.groupBox2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).EndInit();
+      this.groupBox2.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -193,5 +218,7 @@
     private System.Windows.Forms.Button btn_Edit;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.NumericUpDown numUpDn_Quantum;
+    private System.Windows.Forms.Button btn_MoveDown;
+    private System.Windows.Forms.Button btn_MoveUp;
   }
 }
