@@ -29,12 +29,12 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.chk_Preemptive = new System.Windows.Forms.CheckBox();
+      this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
-      this.lstBox_Processes = new System.Windows.Forms.ListBox();
-      this.btn_Add = new System.Windows.Forms.Button();
       this.btn_Remove = new System.Windows.Forms.Button();
+      this.btn_Add = new System.Windows.Forms.Button();
+      this.lstBox_Processes = new System.Windows.Forms.ListBox();
       this.btn_Calculate = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
@@ -51,6 +51,16 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Queue Type";
       // 
+      // chk_Preemptive
+      // 
+      this.chk_Preemptive.AutoSize = true;
+      this.chk_Preemptive.Location = new System.Drawing.Point(134, 30);
+      this.chk_Preemptive.Name = "chk_Preemptive";
+      this.chk_Preemptive.Size = new System.Drawing.Size(80, 17);
+      this.chk_Preemptive.TabIndex = 1;
+      this.chk_Preemptive.Text = "Preemptive";
+      this.chk_Preemptive.UseVisualStyleBackColor = true;
+      // 
       // cmb_QueueType
       // 
       this.cmb_QueueType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -65,16 +75,6 @@
       this.cmb_QueueType.Size = new System.Drawing.Size(121, 21);
       this.cmb_QueueType.TabIndex = 0;
       // 
-      // chk_Preemptive
-      // 
-      this.chk_Preemptive.AutoSize = true;
-      this.chk_Preemptive.Location = new System.Drawing.Point(134, 30);
-      this.chk_Preemptive.Name = "chk_Preemptive";
-      this.chk_Preemptive.Size = new System.Drawing.Size(80, 17);
-      this.chk_Preemptive.TabIndex = 1;
-      this.chk_Preemptive.Text = "Preemptive";
-      this.chk_Preemptive.UseVisualStyleBackColor = true;
-      // 
       // groupBox2
       // 
       this.groupBox2.Controls.Add(this.btn_Remove);
@@ -87,13 +87,15 @@
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Processes";
       // 
-      // lstBox_Processes
+      // btn_Remove
       // 
-      this.lstBox_Processes.FormattingEnabled = true;
-      this.lstBox_Processes.Location = new System.Drawing.Point(7, 20);
-      this.lstBox_Processes.Name = "lstBox_Processes";
-      this.lstBox_Processes.Size = new System.Drawing.Size(152, 212);
-      this.lstBox_Processes.TabIndex = 0;
+      this.btn_Remove.Location = new System.Drawing.Point(164, 49);
+      this.btn_Remove.Name = "btn_Remove";
+      this.btn_Remove.Size = new System.Drawing.Size(75, 23);
+      this.btn_Remove.TabIndex = 2;
+      this.btn_Remove.Text = "Remove";
+      this.btn_Remove.UseVisualStyleBackColor = true;
+      this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
       // 
       // btn_Add
       // 
@@ -105,15 +107,13 @@
       this.btn_Add.UseVisualStyleBackColor = true;
       this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
       // 
-      // btn_Remove
+      // lstBox_Processes
       // 
-      this.btn_Remove.Location = new System.Drawing.Point(164, 49);
-      this.btn_Remove.Name = "btn_Remove";
-      this.btn_Remove.Size = new System.Drawing.Size(75, 23);
-      this.btn_Remove.TabIndex = 2;
-      this.btn_Remove.Text = "Remove";
-      this.btn_Remove.UseVisualStyleBackColor = true;
-      this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
+      this.lstBox_Processes.FormattingEnabled = true;
+      this.lstBox_Processes.Location = new System.Drawing.Point(7, 20);
+      this.lstBox_Processes.Name = "lstBox_Processes";
+      this.lstBox_Processes.Size = new System.Drawing.Size(152, 212);
+      this.lstBox_Processes.TabIndex = 0;
       // 
       // btn_Calculate
       // 
@@ -123,6 +123,7 @@
       this.btn_Calculate.TabIndex = 2;
       this.btn_Calculate.Text = "Calculate";
       this.btn_Calculate.UseVisualStyleBackColor = true;
+      this.btn_Calculate.Click += new System.EventHandler(this.btn_Calculate_Click);
       // 
       // MainForm
       // 
