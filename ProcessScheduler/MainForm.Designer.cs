@@ -34,13 +34,13 @@
       this.chk_Preemptive = new System.Windows.Forms.CheckBox();
       this.cmb_QueueType = new System.Windows.Forms.ComboBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.btn_MoveDown = new System.Windows.Forms.Button();
+      this.btn_MoveUp = new System.Windows.Forms.Button();
       this.btn_Edit = new System.Windows.Forms.Button();
       this.btn_Remove = new System.Windows.Forms.Button();
       this.btn_Add = new System.Windows.Forms.Button();
       this.lstBox_Processes = new System.Windows.Forms.ListBox();
       this.btn_Calculate = new System.Windows.Forms.Button();
-      this.btn_MoveUp = new System.Windows.Forms.Button();
-      this.btn_MoveDown = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).BeginInit();
       this.groupBox2.SuspendLayout();
@@ -71,9 +71,19 @@
       // numUpDn_Quantum
       // 
       this.numUpDn_Quantum.Location = new System.Drawing.Point(179, 53);
+      this.numUpDn_Quantum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
       this.numUpDn_Quantum.Name = "numUpDn_Quantum";
       this.numUpDn_Quantum.Size = new System.Drawing.Size(67, 20);
       this.numUpDn_Quantum.TabIndex = 2;
+      this.numUpDn_Quantum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
       // 
       // chk_Preemptive
       // 
@@ -115,6 +125,26 @@
       this.groupBox2.TabIndex = 1;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Processes";
+      // 
+      // btn_MoveDown
+      // 
+      this.btn_MoveDown.Location = new System.Drawing.Point(165, 136);
+      this.btn_MoveDown.Name = "btn_MoveDown";
+      this.btn_MoveDown.Size = new System.Drawing.Size(75, 23);
+      this.btn_MoveDown.TabIndex = 5;
+      this.btn_MoveDown.Text = "Move Down";
+      this.btn_MoveDown.UseVisualStyleBackColor = true;
+      this.btn_MoveDown.Click += new System.EventHandler(this.btn_MoveDown_Click);
+      // 
+      // btn_MoveUp
+      // 
+      this.btn_MoveUp.Location = new System.Drawing.Point(165, 107);
+      this.btn_MoveUp.Name = "btn_MoveUp";
+      this.btn_MoveUp.Size = new System.Drawing.Size(75, 23);
+      this.btn_MoveUp.TabIndex = 4;
+      this.btn_MoveUp.Text = "Move Up";
+      this.btn_MoveUp.UseVisualStyleBackColor = true;
+      this.btn_MoveUp.Click += new System.EventHandler(this.btn_MoveUp_Click);
       // 
       // btn_Edit
       // 
@@ -166,26 +196,6 @@
       this.btn_Calculate.Text = "Calculate";
       this.btn_Calculate.UseVisualStyleBackColor = true;
       this.btn_Calculate.Click += new System.EventHandler(this.btn_Calculate_Click);
-      // 
-      // btn_MoveUp
-      // 
-      this.btn_MoveUp.Location = new System.Drawing.Point(165, 107);
-      this.btn_MoveUp.Name = "btn_MoveUp";
-      this.btn_MoveUp.Size = new System.Drawing.Size(75, 23);
-      this.btn_MoveUp.TabIndex = 4;
-      this.btn_MoveUp.Text = "Move Up";
-      this.btn_MoveUp.UseVisualStyleBackColor = true;
-      this.btn_MoveUp.Click += new System.EventHandler(this.btn_MoveUp_Click);
-      // 
-      // btn_MoveDown
-      // 
-      this.btn_MoveDown.Location = new System.Drawing.Point(165, 136);
-      this.btn_MoveDown.Name = "btn_MoveDown";
-      this.btn_MoveDown.Size = new System.Drawing.Size(75, 23);
-      this.btn_MoveDown.TabIndex = 5;
-      this.btn_MoveDown.Text = "Move Down";
-      this.btn_MoveDown.UseVisualStyleBackColor = true;
-      this.btn_MoveDown.Click += new System.EventHandler(this.btn_MoveDown_Click);
       // 
       // MainForm
       // 

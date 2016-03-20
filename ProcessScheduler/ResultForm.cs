@@ -18,6 +18,7 @@ namespace ProcessScheduler
   {
     private List<CPUScheduler.Execution> executionList;
     private int totalTime;
+    private int processesCount;
 
     public ResultForm(List<Process> processes, List<CPUScheduler.Execution> executionList)
     {
@@ -25,10 +26,12 @@ namespace ProcessScheduler
       this.executionList = executionList;
 
       totalTime = 0;
+      processesCount = 0;
       foreach (CPUScheduler.Execution exec in executionList)
+      {
         totalTime += exec.EndTime - exec.StartTime;
-
-      ResultForm_Resize(this, null);
+        processesCount++;
+      }
 
       DataTable dataTable = new DataTable();
       dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
@@ -38,14 +41,19 @@ namespace ProcessScheduler
       dataTable.Columns.Add(new DataColumn("Turn around time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Waiting time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Priority", typeof(int)));
-      
 
+      int totalWaitingTime = 0;
       foreach (Process p in processes)
       {
-        dataTable.Rows.Add(new object[] { p.Name,p.BurstTime, p.ArrivalTime,p.GetDepartureTime(),p.GetTurnAroundTime(), p.GetWaitingTime() ,p.Priority});
+        dataTable.Rows.Add(new object[] { p.Name, p.BurstTime, p.ArrivalTime, p.GetDepartureTime(), p.GetTurnAroundTime(), p.GetWaitingTime(), p.Priority });
+        totalWaitingTime += p.GetWaitingTime();
       }
 
-      dataGridView1.DataSource = dataTable;
+      dataGridView.DataSource = dataTable;
+
+      lbl.Text = String.Format("Average Waiting Time = {0}", (float)totalWaitingTime/processesCount);
+      
+      ResultForm_Resize(this, null);
     }
 
     private void panel_Paint(object sender, PaintEventArgs e)
@@ -89,6 +97,16 @@ namespace ProcessScheduler
       panel.Width = this.Width;
       panel.Left = 0;
       panel.Refresh();
+
+      dataGridView.Left = 0;
+      //dataGridView.Width = this.Width -15;
+      dataGridView.Width = 742;
+      dataGridView.Height = this.Height - dataGridView.Top - 40;
+
+      lbl.Text = dataGridView.Width.ToString();
+
+      lbl.Left = (this.Width - lbl.Width) / 2;
+      
     }
   }
 }
