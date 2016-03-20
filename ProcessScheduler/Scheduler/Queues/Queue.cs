@@ -10,12 +10,12 @@ namespace ProcessScheduler.Scheduler.Queues
   public class Queue : IEnumerable<Process>
   {
     private QueueNode head;
-    private QueueType queueType;
+    public QueueType QueueType { get; set; }
 
     public Queue(QueueType queueType)
     {
       head = null;
-      this.queueType = queueType;
+      this.QueueType = queueType;
     }
 
     public void remove()
@@ -40,22 +40,12 @@ namespace ProcessScheduler.Scheduler.Queues
         head = new QueueNode(process);
       else
       {
-        QueueNode response = queueType.Add(head, process);
+        QueueNode response = QueueType.Add(head, process);
         if (response != null)
         {
           head = response;
         }
       }
-    }
-
-    public void setQueueType(QueueType queueType)
-    {
-      this.queueType = queueType;
-    }
-
-    public QueueType getQueueType()
-    {
-      return queueType;
     }
 
     public IEnumerator<Process> GetEnumerator()

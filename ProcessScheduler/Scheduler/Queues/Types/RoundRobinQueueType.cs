@@ -8,16 +8,11 @@ namespace ProcessScheduler.Scheduler.Queues.Types
 {
   public class RoundRobinQueueType : QueueType
   {
-    private int period;
+    public int Quantum { get; set; }
 
-    public RoundRobinQueueType(int period)
+    public RoundRobinQueueType(int quantum)
     {
-      this.period = period;
-    }
-
-    public int getPeriod()
-    {
-      return period;
+      this.Quantum = quantum;
     }
 
     public override Queue.QueueNode Add(Queue.QueueNode head, Process process)

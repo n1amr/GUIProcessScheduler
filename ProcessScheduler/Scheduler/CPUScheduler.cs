@@ -78,21 +78,21 @@ namespace ProcessScheduler.Scheduler
           {
             bool switchProcess = false;
 
-            if (queue.getQueueType() == QueueType.FCFS)
+            if (queue.QueueType == QueueType.FCFS)
             {
               switchProcess = false;
             }
-            else if (queue.getQueueType() == QueueType.SHORTEST_REMAINING_TIME)
+            else if (queue.QueueType == QueueType.SHORTEST_REMAINING_TIME)
             {
               switchProcess = (runningProcess.GetRemainingTime() > queue.getFirst().GetRemainingTime());
             }
-            else if (queue.getQueueType() == QueueType.PRIORITY)
+            else if (queue.QueueType == QueueType.PRIORITY)
             {
               switchProcess = (runningProcess.Priority > queue.getFirst().Priority);
             }
-            else if (queue.getQueueType() is RoundRobinQueueType)
+            else if (queue.QueueType is RoundRobinQueueType)
             {
-              switchProcess = (execution.EndTime - execution.StartTime) >= ((RoundRobinQueueType)queue.getQueueType()).getPeriod();
+              switchProcess = (execution.EndTime - execution.StartTime) >= ((RoundRobinQueueType)queue.QueueType).Quantum;
             }
 
             if (switchProcess)
