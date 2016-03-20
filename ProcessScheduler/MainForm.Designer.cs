@@ -37,17 +37,22 @@
       this.btn_Add = new System.Windows.Forms.Button();
       this.lstBox_Processes = new System.Windows.Forms.ListBox();
       this.btn_Calculate = new System.Windows.Forms.Button();
+      this.numUpDn_Quantum = new System.Windows.Forms.NumericUpDown();
+      this.label1 = new System.Windows.Forms.Label();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).BeginInit();
       this.SuspendLayout();
       // 
       // groupBox1
       // 
+      this.groupBox1.Controls.Add(this.label1);
+      this.groupBox1.Controls.Add(this.numUpDn_Quantum);
       this.groupBox1.Controls.Add(this.chk_Preemptive);
       this.groupBox1.Controls.Add(this.cmb_QueueType);
       this.groupBox1.Location = new System.Drawing.Point(12, 12);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(252, 67);
+      this.groupBox1.Size = new System.Drawing.Size(252, 82);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Queue Type";
@@ -55,7 +60,8 @@
       // chk_Preemptive
       // 
       this.chk_Preemptive.AutoSize = true;
-      this.chk_Preemptive.Location = new System.Drawing.Point(134, 30);
+      this.chk_Preemptive.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.chk_Preemptive.Location = new System.Drawing.Point(122, 30);
       this.chk_Preemptive.Name = "chk_Preemptive";
       this.chk_Preemptive.Size = new System.Drawing.Size(80, 17);
       this.chk_Preemptive.TabIndex = 1;
@@ -71,10 +77,11 @@
             "SJF",
             "Priority",
             "Round Robin"});
-      this.cmb_QueueType.Location = new System.Drawing.Point(6, 30);
+      this.cmb_QueueType.Location = new System.Drawing.Point(6, 28);
       this.cmb_QueueType.Name = "cmb_QueueType";
-      this.cmb_QueueType.Size = new System.Drawing.Size(121, 21);
+      this.cmb_QueueType.Size = new System.Drawing.Size(100, 21);
       this.cmb_QueueType.TabIndex = 0;
+      this.cmb_QueueType.SelectedIndexChanged += new System.EventHandler(this.cmb_QueueType_SelectedIndexChanged);
       // 
       // groupBox2
       // 
@@ -82,7 +89,7 @@
       this.groupBox2.Controls.Add(this.btn_Remove);
       this.groupBox2.Controls.Add(this.btn_Add);
       this.groupBox2.Controls.Add(this.lstBox_Processes);
-      this.groupBox2.Location = new System.Drawing.Point(12, 85);
+      this.groupBox2.Location = new System.Drawing.Point(12, 100);
       this.groupBox2.Name = "groupBox2";
       this.groupBox2.Size = new System.Drawing.Size(252, 243);
       this.groupBox2.TabIndex = 1;
@@ -131,7 +138,7 @@
       // 
       // btn_Calculate
       // 
-      this.btn_Calculate.Location = new System.Drawing.Point(96, 340);
+      this.btn_Calculate.Location = new System.Drawing.Point(96, 355);
       this.btn_Calculate.Name = "btn_Calculate";
       this.btn_Calculate.Size = new System.Drawing.Size(75, 23);
       this.btn_Calculate.TabIndex = 2;
@@ -139,11 +146,27 @@
       this.btn_Calculate.UseVisualStyleBackColor = true;
       this.btn_Calculate.Click += new System.EventHandler(this.btn_Calculate_Click);
       // 
+      // numUpDn_Quantum
+      // 
+      this.numUpDn_Quantum.Location = new System.Drawing.Point(179, 53);
+      this.numUpDn_Quantum.Name = "numUpDn_Quantum";
+      this.numUpDn_Quantum.Size = new System.Drawing.Size(67, 20);
+      this.numUpDn_Quantum.TabIndex = 2;
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(122, 55);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(51, 13);
+      this.label1.TabIndex = 3;
+      this.label1.Text = "Quantum";
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(266, 375);
+      this.ClientSize = new System.Drawing.Size(266, 381);
       this.Controls.Add(this.btn_Calculate);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
@@ -152,6 +175,7 @@
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.groupBox2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -167,5 +191,7 @@
     private System.Windows.Forms.Button btn_Add;
     private System.Windows.Forms.Button btn_Calculate;
     private System.Windows.Forms.Button btn_Edit;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.NumericUpDown numUpDn_Quantum;
   }
 }

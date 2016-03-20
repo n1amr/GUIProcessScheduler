@@ -16,11 +16,13 @@ namespace ProcessScheduler
   public partial class MainForm : Form
   {
     private List<Process> processes;
+    private int queue_type;
 
     public MainForm()
     {
       InitializeComponent();
       processes = new List<Process>();
+      cmb_QueueType.SelectedIndex = 0;
 
       //for (int i = 0; i < 5; i++)
       //{
@@ -86,22 +88,65 @@ namespace ProcessScheduler
       CPUScheduler cpu = null;
       int pid = 0;
 
-      //if (cmb_QueueType.SelectedItem != null)
+      if (cmb_QueueType.SelectedItem != null)
       {
-        //if (cmb_QueueType.SelectedItem.ToString() == "FCFS")
+        QueueType queueType = null;
+        if (queue_type == 0)
         {
-          //cpu = new CPUScheduler(QueueType.FCFS, chk_Preemptive.Checked);
-          cpu = new CPUScheduler(QueueType.FCFS, false);
-
-          foreach (Process p in processes)
-          {
-            cpu.makeInsertion(p, p.getArrivalTime());
-          }
+          queueType = QueueType.FCFS;
         }
+        else if (queue_type == 1)
+        {
+          queueType = QueueType.SHORTEST_REMAINING_TIME;
+        }
+        else if (queue_type == 2)
+        {
+          queueType = QueueType.PRIORITY;
+        }
+        else if (queue_type == 3)
+        {
+          queueType = new RounRobinQueueType((int)numUpDn_Quantum.Value);
+        }
+
+        cpu = new CPUScheduler(queueType, chk_Preemptive.Checked);
+
+        foreach (Process p in processes)
+        {
+          cpu.makeInsertion(p, p.getArrivalTime());
+        }
+        List<CPUScheduler.Execution> executionList = cpu.startExecution();
+        ResultForm resultForm = new ResultForm(executionList);
+        resultForm.Show();
+
       }
-      List<CPUScheduler.Execution> executionList = cpu.startExecution();
-      ResultForm resultForm = new ResultForm(executionList);
-      resultForm.Show();
+    }
+
+
+
+    private void cmb_QueueType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      string selection = cmb_QueueType.SelectedItem.ToString();
+      if (selection.Equals("FCFS"))
+      {
+        queue_type = 0;
+        chk_Preemptive.Checked = false;
+      }
+      else if (selection.Equals("SJF"))
+      {
+        queue_type = 1;
+      }
+      else if (selection.Equals("Priority"))
+      {
+        queue_type = 2;
+      }
+      else if (selection.Equals("Round Robin"))
+      {
+        queue_type = 3;
+        chk_Preemptive.Checked = true;
+      }
+
+      chk_Preemptive.Enabled = queue_type == 1 || queue_type == 2;
+      numUpDn_Quantum.Enabled = queue_type == 3;
     }
   }
 }

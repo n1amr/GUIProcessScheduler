@@ -80,13 +80,18 @@ namespace ProcessScheduler.Scheduler
             if (queue.getQueueType() == QueueType.FCFS)
             {
               switchProcess = false;
-              // TODO
-              //} else if (queue.getQueueType() == QueueType.SHORTEST_REMAINING_TIME) {
-              //  switchProcess = (runningProcess.getRemainingTime() > queue.getFirst().getRemainingTime());
-              //} else if (queue.getQueueType() == QueueType.PRIORITY) {
-              //  switchProcess = (runningProcess.getPriority() > queue.getFirst().getPriority());
-              //} else if (queue.getQueueType() instanceof RounRobinQueueType) {
-              //  switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RounRobinQueueType) queue.getQueueType()).getPeriod();
+            }
+            else if (queue.getQueueType() == QueueType.SHORTEST_REMAINING_TIME)
+            {
+              switchProcess = (runningProcess.getRemainingTime() > queue.getFirst().getRemainingTime());
+            }
+            else if (queue.getQueueType() == QueueType.PRIORITY)
+            {
+              switchProcess = (runningProcess.getPriority() > queue.getFirst().getPriority());
+            }
+            else if (queue.getQueueType() is RounRobinQueueType)
+            {
+              switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RounRobinQueueType)queue.getQueueType()).getPeriod();
             }
 
             if (switchProcess)
