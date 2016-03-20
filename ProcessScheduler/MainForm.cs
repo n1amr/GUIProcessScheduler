@@ -26,5 +26,14 @@ namespace ProcessScheduler
         lstBox_Processes.Items.Add(form.process.getProcessName());
       }
     }
+
+    private void btn_Remove_Click(object sender, EventArgs e)
+    {
+      object item = lstBox_Processes.SelectedItem;
+      if (item != null)
+      {
+        lstBox_Processes.Items.Remove(item);
+      }
+    }
   }
 }
