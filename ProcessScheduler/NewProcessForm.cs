@@ -46,7 +46,7 @@ namespace ProcessScheduler
 
     private void numUpDn_BurstTime_ValueChanged(object sender, EventArgs e)
     {
-      process.setDuration((int)numUpDn_BurstTime.Value);
+      process.SetBurstTime((int)numUpDn_BurstTime.Value);
     }
 
     private void numUpDn_ArrivalTime_ValueChanged(object sender, EventArgs e)

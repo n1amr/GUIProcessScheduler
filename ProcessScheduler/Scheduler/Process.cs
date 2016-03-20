@@ -10,7 +10,7 @@ namespace ProcessScheduler
   {
     public String Name { get; set; }
     public int PID { get; set; }
-    public int BurstTime { get; set; }
+    public int BurstTime { get; private set; }
     public int remainingTime { get; private set; }
     public int Priority { get; set; }
     public int ArrivalTime { get; set; }
@@ -46,7 +46,12 @@ namespace ProcessScheduler
       return remainingTime == 0;
     }
 
-    public void setDuration(int time)
+    public void ResetRemainingTime()
+    {
+      remainingTime = BurstTime;
+    }
+
+    public void SetBurstTime(int time)
     {
       this.BurstTime = time;
       remainingTime = BurstTime;

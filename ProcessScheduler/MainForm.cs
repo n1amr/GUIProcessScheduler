@@ -112,7 +112,7 @@ namespace ProcessScheduler
 
         foreach (Process p in processes)
         {
-          cpu.makeInsertion(p, p.getArrivalTime());
+          cpu.Insert(p);
         }
         List<CPUScheduler.Execution> executionList = cpu.startExecution();
         ResultForm resultForm = new ResultForm(executionList);

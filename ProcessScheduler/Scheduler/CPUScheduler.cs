@@ -26,13 +26,14 @@ namespace ProcessScheduler.Scheduler
       processes = new List<Process>();
     }
 
-    public void makeInsertion(Process process, int timeOfInsertion)
+    public void Insert(Process process)
     {
-      insertions.Add(new Insertion(process, timeOfInsertion));
+      process.ResetRemainingTime();
+      insertions.Add(new Insertion(process, process.ArrivalTime));
     }
 
 
-    public void printQueue()
+    private void printQueue()
     {
       foreach (Process process in queue)
       {
