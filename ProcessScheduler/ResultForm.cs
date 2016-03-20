@@ -16,16 +16,30 @@ namespace ProcessScheduler
   public partial class ResultForm : Form
   {
     private List<CPUScheduler.Execution> executionList;
-    private int totalTime = 0;
-    public ResultForm(List<CPUScheduler.Execution> executionList)
+    private int totalTime;
+
+    public ResultForm(List<Process> processes, List<CPUScheduler.Execution> executionList)
     {
       InitializeComponent();
       this.executionList = executionList;
+
+      totalTime = 0;
       foreach (CPUScheduler.Execution exec in executionList)
-      {
         totalTime += exec.EndTime - exec.StartTime;
-      }
+
       ResultForm_Resize(this, null);
+
+      DataTable dataTable = new DataTable();
+      dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
+      dataTable.Columns.Add(new DataColumn("PID", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("WaitingTime", typeof(int)));
+
+      foreach (Process p in processes)
+      {
+        dataTable.Rows.Add(new object[] { p.Name, p.PID, p.GetWaitingTime() });
+      }
+
+      dataGridView1.DataSource = dataTable;
     }
 
     private void panel_Paint(object sender, PaintEventArgs e)

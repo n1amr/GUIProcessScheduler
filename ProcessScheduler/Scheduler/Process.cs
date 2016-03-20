@@ -13,11 +13,11 @@ namespace ProcessScheduler
     public String Name { get; set; }
     public int PID { get; set; }
     public int BurstTime { get; private set; }
-    public int remainingTime { get; private set; }
+    private int remainingTime { get; set; }
     public int Priority { get; set; }
     public int ArrivalTime { get; set; }
     private List<CPUScheduler.Execution> ExecutionList;
-    private int DepartureTime;
+    private int departureTime;
 
     public Process(String processName, int pid, int time, int priority, int arrivalTime)
     {
@@ -55,7 +55,7 @@ namespace ProcessScheduler
     {
       remainingTime = BurstTime;
       ExecutionList = new List<CPUScheduler.Execution>();
-      DepartureTime = -1;
+      departureTime = -1;
     }
 
     public void SetBurstTime(int time)
@@ -71,12 +71,12 @@ namespace ProcessScheduler
 
     public int GetDepartureTime()
     {
-      if (DepartureTime == -1)
+      if (departureTime == -1)
         foreach (CPUScheduler.Execution e in ExecutionList)
-          if (DepartureTime < e.EndTime)
-            DepartureTime = e.EndTime;
+          if (departureTime < e.EndTime)
+            departureTime = e.EndTime;
 
-      return DepartureTime;
+      return departureTime;
     }
 
     public int GetTurnAroundTime()
@@ -91,7 +91,7 @@ namespace ProcessScheduler
 
     public void AddExecution(CPUScheduler.Execution e)
     {
-      DepartureTime = -1;
+      departureTime = -1;
       ExecutionList.Add(e);
     }
   }

@@ -8,3 +8,4 @@ D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.exe
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.pdb
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.EditProcessForm.resources
+D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.csprojResolveAssemblyReference.cache

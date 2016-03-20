@@ -29,7 +29,7 @@ namespace ProcessScheduler
       }
 
 
-      //btn_Calculate_Click(this, null);
+      btn_Calculate_Click(this, null);
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
@@ -98,8 +98,12 @@ namespace ProcessScheduler
           cpu.Insert(p);
 
         List<CPUScheduler.Execution> executionList = cpu.StartExecution();
-        ResultForm resultForm = new ResultForm(executionList);
-        resultForm.Show();
+        List<Process> processes= new List<Process>();
+        foreach (Process p in lstBox_Processes.Items)
+          processes.Add(p);
+        
+        ResultForm resultForm = new ResultForm(processes, executionList);
+        resultForm.ShowDialog();
 
       }
 
