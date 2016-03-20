@@ -13,22 +13,22 @@ namespace ProcessScheduler
   public partial class NewProcessForm : Form
   {
     public Process process;
-    
+
     public NewProcessForm()
     {
       InitializeComponent();
       process = new Process(0);
     }
-    
+
     public NewProcessForm(Process process, bool priority = false)
     {
       InitializeComponent();
       this.process = process;
 
-      txtBox_ProcessName.Text = process.getProcessName();
-      numUpDn_BurstTime.Value = process.getduration();
-      numUpDn_Prioriity.Value = process.getPriority();
-      numUpDn_ArrivalTime.Value = process.getArrivalTime();
+      txtBox_ProcessName.Text = process.Name;
+      numUpDn_BurstTime.Value = process.BurstTime;
+      numUpDn_Prioriity.Value = process.Priority;
+      numUpDn_ArrivalTime.Value = process.ArrivalTime;
 
       numUpDn_Prioriity.Enabled = priority;
     }
@@ -41,7 +41,7 @@ namespace ProcessScheduler
 
     private void txtBox_ProcessName_TextChanged(object sender, EventArgs e)
     {
-      process.setProcessName(txtBox_ProcessName.Text);
+      process.Name = txtBox_ProcessName.Text;
     }
 
     private void numUpDn_BurstTime_ValueChanged(object sender, EventArgs e)
@@ -51,12 +51,12 @@ namespace ProcessScheduler
 
     private void numUpDn_ArrivalTime_ValueChanged(object sender, EventArgs e)
     {
-      process.setArrivalTime((int)numUpDn_ArrivalTime.Value);
+      process.ArrivalTime = ((int)numUpDn_ArrivalTime.Value);
     }
 
     private void numUpDn_Prioriity_ValueChanged(object sender, EventArgs e)
     {
-      process.setPriority((int)numUpDn_Prioriity.Value);
+      process.Priority = ((int)numUpDn_Prioriity.Value);
     }
 
     public Process getProcess()

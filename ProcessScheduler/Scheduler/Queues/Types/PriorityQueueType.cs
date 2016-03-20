@@ -13,7 +13,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       Queue.QueueNode newNode = new Queue.QueueNode(process);
 
       // Before head
-      if (process.getPriority() < head.getProcess().getPriority())
+      if (process.Priority < head.getProcess().Priority)
       {
         newNode.setNext(head);
         return newNode;
@@ -22,7 +22,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       // Search for the node before the inserted one
       while (head.getNext() != null)
       {
-        if (process.getPriority() < head.getNext().getProcess().getPriority())
+        if (process.Priority < head.getNext().getProcess().Priority)
         {
           newNode.setNext(head.getNext());
           head.setNext(newNode);

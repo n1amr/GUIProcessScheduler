@@ -54,59 +54,12 @@ namespace ProcessScheduler
     public void SetBurstTime(int time)
     {
       this.BurstTime = time;
-      remainingTime = BurstTime;
-    }
-
-    public int getduration()
-    {
-      return BurstTime;
-    }
-
-    public String getProcessName()
-    {
-      return Name;
-    }
-
-    public void setProcessName(String processName)
-    {
-      this.Name = processName;
-    }
-
-    public int getPid()
-    {
-      return PID;
-    }
-
-    public void setPid(int pid)
-    {
-      this.PID = pid;
-    }
-
-    public int getPriority()
-    {
-      return Priority;
-    }
-
-    public void setPriority(int priority)
-    {
-      this.Priority = priority;
-    }
-    public int getArrivalTime()
-    {
-      return ArrivalTime;
-    }
-
-    public void setArrivalTime(int arrivalTime)
-    {
-      this.ArrivalTime = arrivalTime;
+      ResetRemainingTime();
     }
 
     public override String ToString()
     {
-      //return String.Format("Process\n\tname: {0}\n\tPID: {1}\n\tduration: {2}\n\tremaining_time: {3}\n\tpriority: {4}", processName, pid, duration, remainingTime, priority);
       return String.Format("Process\tname: {0}\tPID: {1}\tduration: {2}\tremaining_time: {3}\tpriority: {4}", Name, PID, BurstTime, remainingTime, Priority);
     }
-
-
   }
 }

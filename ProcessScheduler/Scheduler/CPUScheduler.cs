@@ -88,7 +88,7 @@ namespace ProcessScheduler.Scheduler
             }
             else if (queue.getQueueType() == QueueType.PRIORITY)
             {
-              switchProcess = (runningProcess.getPriority() > queue.getFirst().getPriority());
+              switchProcess = (runningProcess.Priority > queue.getFirst().Priority);
             }
             else if (queue.getQueueType() is RoundRobinQueueType)
             {

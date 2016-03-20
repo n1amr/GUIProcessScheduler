@@ -42,7 +42,7 @@ namespace ProcessScheduler
       if (form.DialogResult == DialogResult.OK)
       {
         Process process = form.process;
-        lstBox_Processes.Items.Add(process.getProcessName());
+        lstBox_Processes.Items.Add(process.Name);
         processes.Add(process);
         btn_Edit.Enabled = true;
         btn_Remove.Enabled = true;
@@ -60,7 +60,7 @@ namespace ProcessScheduler
         if (form.DialogResult == DialogResult.OK)
         {
           Process process = form.getProcess();
-          lstBox_Processes.Items[index] = process.getProcessName();
+          lstBox_Processes.Items[index] = process.Name;
           processes[index] = process;
         }
       }

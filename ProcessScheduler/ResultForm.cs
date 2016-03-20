@@ -50,7 +50,7 @@ namespace ProcessScheduler
           Point namePosition = centerPoint;
           Point timePosition = rightBottom;
 
-          g.DrawString(exec.getProcess().getProcessName(), this.Font, brush, namePosition, sf);
+          g.DrawString(exec.getProcess().Name, this.Font, brush, namePosition, sf);
           g.DrawString(exec.getEndTime().ToString(), this.Font, brush, timePosition, sf);
 
           g.DrawLine(pen, leftTop, leftBottom);
