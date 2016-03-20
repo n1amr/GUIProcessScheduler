@@ -10,19 +10,22 @@ using System.Windows.Forms;
 
 namespace ProcessScheduler
 {
-  public partial class NewProcessForm : Form
+  public partial class EditProcessForm : Form
   {
     public Process process;
 
-    public NewProcessForm()
-    {
-      InitializeComponent();
-      process = new Process(0);
-    }
+    //public EditProcessForm()
+    //{
+    //  InitializeComponent();
+    //  process = new Process(0);
+    //}
 
-    public NewProcessForm(Process process, bool priority = false)
+    public EditProcessForm(Process process, bool priority = false)
     {
       InitializeComponent();
+
+      if (process == null)
+        process = new Process(0);
       this.process = process;
 
       txtBox_ProcessName.Text = process.Name;

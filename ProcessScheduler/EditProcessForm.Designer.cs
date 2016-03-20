@@ -1,6 +1,6 @@
 ﻿namespace ProcessScheduler
 {
-  partial class NewProcessForm
+  partial class EditProcessForm
   {
     /// <summary>
     /// Required designer variable.

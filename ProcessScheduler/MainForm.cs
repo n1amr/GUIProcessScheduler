@@ -15,35 +15,32 @@ namespace ProcessScheduler
 {
   public partial class MainForm : Form
   {
-    private List<Process> processes;
     private int queue_type;
 
     public MainForm()
     {
       InitializeComponent();
-      processes = new List<Process>();
       cmb_QueueType.SelectedIndex = 0;
 
-      //for (int i = 0; i < 5; i++)
-      //{
-      //  Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
-      //  processes.Add(p);
-      //  lstBox_Processes.Items.Add(p.getProcessName());
-      //}
+      for (int i = 0; i < 5; i++)
+      {
+        Process p = new Process(String.Format("P{0}", i), i, i, 10 - i, 0);
+        lstBox_Processes.Items.Add(p);
+      }
+
 
       //btn_Calculate_Click(this, null);
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
     {
-      NewProcessForm form = new NewProcessForm();
+      EditProcessForm form = new EditProcessForm(null, queue_type == 2);
       form.StartPosition = FormStartPosition.CenterParent;
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
         Process process = form.process;
         lstBox_Processes.Items.Add(process);
-        processes.Add(process);
         btn_Edit.Enabled = true;
         btn_Remove.Enabled = true;
       }
@@ -54,18 +51,14 @@ namespace ProcessScheduler
       int index = lstBox_Processes.SelectedIndex;
       if (index >= 0)
       {
-        NewProcessForm form = new NewProcessForm(processes[index]);
+        Process process = (Process)lstBox_Processes.Items[index];
+        EditProcessForm form = new EditProcessForm(process, queue_type == 2);
         form.StartPosition = FormStartPosition.CenterParent;
         form.ShowDialog();
         if (form.DialogResult == DialogResult.OK)
-        {
-          Process process = form.getProcess();
-          lstBox_Processes.Items[index] = process.Name;
-          processes[index] = process;
-        }
+          lstBox_Processes.Items[index] = form.getProcess();
       }
     }
-
 
     private void btn_Remove_Click(object sender, EventArgs e)
     {
@@ -73,9 +66,8 @@ namespace ProcessScheduler
       if (index >= 0)
       {
         lstBox_Processes.Items.RemoveAt(index);
-        processes.RemoveAt(index);
 
-        if (processes.Count == 0)
+        if (lstBox_Processes.Items.Count == 0)
         {
           btn_Edit.Enabled = false;
           btn_Remove.Enabled = false;
@@ -92,36 +84,25 @@ namespace ProcessScheduler
       {
         QueueType queueType = null;
         if (queue_type == 0)
-        {
           queueType = QueueType.FCFS;
-        }
         else if (queue_type == 1)
-        {
           queueType = QueueType.SHORTEST_REMAINING_TIME;
-        }
         else if (queue_type == 2)
-        {
           queueType = QueueType.PRIORITY;
-        }
         else if (queue_type == 3)
-        {
           queueType = new RoundRobinQueueType((int)numUpDn_Quantum.Value);
-        }
 
         cpu = new CPUScheduler(queueType, chk_Preemptive.Checked);
 
-        foreach (Process p in processes)
-        {
+        foreach (Process p in lstBox_Processes.Items)
           cpu.Insert(p);
-        }
+
         List<CPUScheduler.Execution> executionList = cpu.StartExecution();
         ResultForm resultForm = new ResultForm(executionList);
         resultForm.Show();
 
       }
     }
-
-
 
     private void cmb_QueueType_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -158,9 +139,8 @@ namespace ProcessScheduler
         object temp = lstBox_Processes.Items[index];
         lstBox_Processes.Items[index] = lstBox_Processes.Items[index - 1];
         lstBox_Processes.Items[index - 1] = temp;
-
+        lstBox_Processes.SelectedIndex--;
       }
-      lstBox_Processes.SelectedIndex--;
     }
 
     private void btn_MoveDown_Click(object sender, EventArgs e)
@@ -169,10 +149,10 @@ namespace ProcessScheduler
       if (index + 1 < lstBox_Processes.Items.Count)
       {
         object temp = lstBox_Processes.Items[index];
-        lstBox_Processes.Items[index] = lstBox_Processes.Items[index +1];
+        lstBox_Processes.Items[index] = lstBox_Processes.Items[index + 1];
         lstBox_Processes.Items[index + 1] = temp;
+        lstBox_Processes.SelectedIndex++;
       }
-      lstBox_Processes.SelectedIndex++;
     }
   }
 }
