@@ -20,7 +20,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       return period;
     }
 
-    public override Queue.QueueNode add(Queue.QueueNode head, Process process)
+    public override Queue.QueueNode Add(Queue.QueueNode head, Process process)
     {
       while (head.Next != null)
         head = head.Next;

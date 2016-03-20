@@ -8,7 +8,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
 {
   public class PriorityQueueType : QueueType
   {
-    public override Queue.QueueNode add(Queue.QueueNode head, Process process)
+    public override Queue.QueueNode Add(Queue.QueueNode head, Process process)
     {
       Queue.QueueNode newNode = new Queue.QueueNode(process);
 

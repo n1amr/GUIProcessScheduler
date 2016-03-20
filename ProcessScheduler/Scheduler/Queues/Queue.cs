@@ -40,7 +40,7 @@ namespace ProcessScheduler.Scheduler.Queues
         head = new QueueNode(process);
       else
       {
-        QueueNode response = queueType.add(head, process);
+        QueueNode response = queueType.Add(head, process);
         if (response != null)
         {
           head = response;
