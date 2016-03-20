@@ -150,7 +150,7 @@
       this.btn_Cancel.Text = "Cancel";
       this.btn_Cancel.UseVisualStyleBackColor = true;
       // 
-      // NewProcessForm
+      // EditProcessForm
       // 
       this.AcceptButton = this.btn_Ok;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,8 +167,11 @@
       this.Controls.Add(this.numUpDn_BurstTime);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.txtBox_ProcessName);
-      this.Name = "NewProcessForm";
-      this.Text = "Process Scheduler";
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
+      this.Name = "EditProcessForm";
+      this.Text = "Edit Process";
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_BurstTime)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_ArrivalTime)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Prioriity)).EndInit();

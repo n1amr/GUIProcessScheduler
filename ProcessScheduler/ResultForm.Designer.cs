@@ -67,12 +67,11 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(749, 337);
+      this.ClientSize = new System.Drawing.Size(749, 341);
       this.Controls.Add(this.lbl);
       this.Controls.Add(this.dataGridView);
       this.Controls.Add(this.panel);
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
+      this.MinimumSize = new System.Drawing.Size(660, 380);
       this.Name = "ResultForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Result";

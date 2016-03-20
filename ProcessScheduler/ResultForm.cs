@@ -20,7 +20,7 @@ namespace ProcessScheduler
     private int totalTime;
     private int processesCount;
 
-    public ResultForm(List<Process> processes, List<CPUScheduler.Execution> executionList)
+    public ResultForm(List<Process> processes, List<CPUScheduler.Execution> executionList, bool priority = false)
     {
       InitializeComponent();
       this.executionList = executionList;
@@ -36,23 +36,27 @@ namespace ProcessScheduler
       DataTable dataTable = new DataTable();
       dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
       dataTable.Columns.Add(new DataColumn("Burst time", typeof(int)));
+      if (priority)
+        dataTable.Columns.Add(new DataColumn("Priority", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Arrival time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Departure time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Turn around time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Waiting time", typeof(int)));
-      dataTable.Columns.Add(new DataColumn("Priority", typeof(int)));
 
       int totalWaitingTime = 0;
       foreach (Process p in processes)
       {
-        dataTable.Rows.Add(new object[] { p.Name, p.BurstTime, p.ArrivalTime, p.GetDepartureTime(), p.GetTurnAroundTime(), p.GetWaitingTime(), p.Priority });
+        if (priority)
+          dataTable.Rows.Add(new object[] { p.Name, p.BurstTime, p.Priority, p.ArrivalTime, p.GetDepartureTime(), p.GetTurnAroundTime(), p.GetWaitingTime() });
+        else
+          dataTable.Rows.Add(new object[] { p.Name, p.BurstTime, p.ArrivalTime, p.GetDepartureTime(), p.GetTurnAroundTime(), p.GetWaitingTime() });
         totalWaitingTime += p.GetWaitingTime();
       }
 
       dataGridView.DataSource = dataTable;
 
-      lbl.Text = String.Format("Average Waiting Time = {0}", (float)totalWaitingTime/processesCount);
-      
+      lbl.Text = String.Format("Average Waiting Time = {0}", (float)totalWaitingTime / processesCount);
+
       ResultForm_Resize(this, null);
     }
 
@@ -61,7 +65,7 @@ namespace ProcessScheduler
       base.OnPaint(e);
       using (Graphics g = e.Graphics)
       {
-        Pen pen = new Pen(Color.Black, 3);
+        Pen pen = new Pen(Color.Black, 1);
         SolidBrush brush = new SolidBrush(Color.Black);
         StringFormat sf = new StringFormat();
         sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
@@ -102,7 +106,7 @@ namespace ProcessScheduler
       dataGridView.Width = this.Width - 15;
       dataGridView.Height = this.Height - dataGridView.Top - 40;
 
-      lbl.Left = (this.Width - lbl.Width) / 2;      
+      lbl.Left = (this.Width - lbl.Width) / 2;
     }
   }
 }

@@ -58,7 +58,7 @@
       this.groupBox1.Size = new System.Drawing.Size(252, 82);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "Queue Type";
+      this.groupBox1.Text = "Scheduling Method";
       // 
       // label1
       // 
@@ -215,15 +215,16 @@
       this.AcceptButton = this.btn_Calculate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(266, 351);
+      this.ClientSize = new System.Drawing.Size(271, 346);
       this.Controls.Add(this.btn_Calculate);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-      this.Text = "MainForm";
+      this.Text = "Process Scheduler";
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).EndInit();

@@ -36,6 +36,7 @@ namespace ProcessScheduler
     {
       EditProcessForm form = new EditProcessForm(null, queue_type == 2);
       form.StartPosition = FormStartPosition.CenterParent;
+      form.Text = "New Process";
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -95,7 +96,7 @@ namespace ProcessScheduler
         foreach (Process p in lstBox_Processes.Items)
           processes.Add(p);
 
-        ResultForm resultForm = new ResultForm(processes, executionList);
+        ResultForm resultForm = new ResultForm(processes, executionList, queue_type == 2);
         resultForm.ShowDialog();
 
       }
