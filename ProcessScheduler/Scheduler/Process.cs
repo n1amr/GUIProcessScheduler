@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcessScheduler
 {
-  class Process
+  public class Process
   {
     private String processName;
     private int pid;

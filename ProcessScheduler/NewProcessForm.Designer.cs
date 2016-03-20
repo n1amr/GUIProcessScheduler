@@ -51,6 +51,7 @@
       this.txtBox_ProcessName.Name = "txtBox_ProcessName";
       this.txtBox_ProcessName.Size = new System.Drawing.Size(120, 20);
       this.txtBox_ProcessName.TabIndex = 0;
+      this.txtBox_ProcessName.TextChanged += new System.EventHandler(this.txtBox_ProcessName_TextChanged);
       // 
       // imageList1
       // 
@@ -73,6 +74,7 @@
       this.numUpDn_BurstTime.Name = "numUpDn_BurstTime";
       this.numUpDn_BurstTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_BurstTime.TabIndex = 2;
+      this.numUpDn_BurstTime.ValueChanged += new System.EventHandler(this.numUpDn_BurstTime_ValueChanged);
       // 
       // numUpDn_ArrivalTime
       // 
@@ -80,6 +82,7 @@
       this.numUpDn_ArrivalTime.Name = "numUpDn_ArrivalTime";
       this.numUpDn_ArrivalTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_ArrivalTime.TabIndex = 3;
+      this.numUpDn_ArrivalTime.ValueChanged += new System.EventHandler(this.numUpDn_ArrivalTime_ValueChanged);
       // 
       // label2
       // 
@@ -115,6 +118,7 @@
       this.numUpDn_Prioriity.Name = "numUpDn_Prioriity";
       this.numUpDn_Prioriity.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_Prioriity.TabIndex = 6;
+      this.numUpDn_Prioriity.ValueChanged += new System.EventHandler(this.numUpDn_Prioriity_ValueChanged);
       // 
       // btn_Ok
       // 
@@ -124,6 +128,7 @@
       this.btn_Ok.TabIndex = 8;
       this.btn_Ok.Text = "Ok";
       this.btn_Ok.UseVisualStyleBackColor = true;
+      this.btn_Ok.Click += new System.EventHandler(this.btn_Ok_Click);
       // 
       // btn_Cancel
       // 

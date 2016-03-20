@@ -19,7 +19,12 @@ namespace ProcessScheduler
 
     private void btn_Add_Click(object sender, EventArgs e)
     {
-      lstBox_Processes.AutoSize = true;
+      NewProcessForm form = new NewProcessForm();
+      form.ShowDialog();
+      if (form.DialogResult == DialogResult.OK)
+      {
+        lstBox_Processes.Items.Add(form.process.getProcessName());
+      }
     }
   }
 }
