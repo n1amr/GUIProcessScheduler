@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProcessScheduler
 {
-  public partial class MainForm : Form
+  public partial class NewProcessForm : Form
   {
-    public MainForm()
+    public NewProcessForm()
     {
       InitializeComponent();
     }

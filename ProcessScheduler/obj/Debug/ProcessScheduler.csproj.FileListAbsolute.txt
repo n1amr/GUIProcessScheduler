@@ -2,8 +2,8 @@ D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\bin\Debug\ProcessScheduler
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\bin\Debug\ProcessScheduler.exe
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\bin\Debug\ProcessScheduler.pdb
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.csprojResolveAssemblyReference.cache
-D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.Scheduler.resources
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.Properties.Resources.resources
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.csproj.GenerateResource.Cache
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.exe
 D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.pdb
+D:\ProcessScheduler\ProcessScheduler\ProcessScheduler\obj\Debug\ProcessScheduler.NewProcessForm.resources

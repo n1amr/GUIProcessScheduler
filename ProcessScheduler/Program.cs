@@ -16,7 +16,7 @@ namespace ProcessScheduler
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Scheduler());
+      Application.Run(new MainForm());
     }
   }
 }
