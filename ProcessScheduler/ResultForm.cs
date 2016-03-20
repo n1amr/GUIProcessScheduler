@@ -38,11 +38,12 @@ namespace ProcessScheduler
         StringFormat sf = new StringFormat();
         sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 
-        Point leftTop = new Point(panel.Width * 1 / 10, panel.Height * 5 / 100);
+        int HMargin = 50;
+        Point leftTop = new Point(HMargin, panel.Height * 5 / 100);
         foreach (CPUScheduler.Execution exec in executionList)
         {
           int height = panel.Height * 50 / 100;
-          int width = (panel.Width * 8 / 10) * (exec.EndTime - exec.StartTime) / totalTime;
+          int width = (panel.Width - HMargin * 2) * (exec.EndTime - exec.StartTime) / totalTime;
           Point leftBottom = new Point(leftTop.X, leftTop.Y + height);
           Point rightBottom = new Point(leftTop.X + width, leftTop.Y + height);
           Point rightTop = new Point(leftTop.X + width, leftTop.Y);
@@ -65,7 +66,7 @@ namespace ProcessScheduler
 
     private void ResultForm_Resize(object sender, EventArgs e)
     {
-      panel.Height = this.Height;
+      //panel.Height = this.Height;
       panel.Width = this.Width;
       panel.Top = 0;
       panel.Left = 0;

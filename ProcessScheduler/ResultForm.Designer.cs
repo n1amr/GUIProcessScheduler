@@ -28,17 +28,8 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.lstBox_Queue = new System.Windows.Forms.ListBox();
       this.panel = new System.Windows.Forms.Panel();
       this.SuspendLayout();
-      // 
-      // lstBox_Queue
-      // 
-      this.lstBox_Queue.FormattingEnabled = true;
-      this.lstBox_Queue.Location = new System.Drawing.Point(12, 12);
-      this.lstBox_Queue.Name = "lstBox_Queue";
-      this.lstBox_Queue.Size = new System.Drawing.Size(120, 199);
-      this.lstBox_Queue.TabIndex = 0;
       // 
       // panel
       // 
@@ -55,7 +46,6 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(749, 337);
       this.Controls.Add(this.panel);
-      this.Controls.Add(this.lstBox_Queue);
       this.Name = "ResultForm";
       this.Text = "ResultForm";
       this.Resize += new System.EventHandler(this.ResultForm_Resize);
@@ -66,7 +56,6 @@
 
     #endregion
 
-    private System.Windows.Forms.ListBox lstBox_Queue;
     private System.Windows.Forms.Panel panel;
   }
 }
