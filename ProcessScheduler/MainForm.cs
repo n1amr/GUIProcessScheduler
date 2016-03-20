@@ -105,7 +105,7 @@ namespace ProcessScheduler
         }
         else if (queue_type == 3)
         {
-          queueType = new RounRobinQueueType((int)numUpDn_Quantum.Value);
+          queueType = new RoundRobinQueueType((int)numUpDn_Quantum.Value);
         }
 
         cpu = new CPUScheduler(queueType, chk_Preemptive.Checked);

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProcessScheduler.Scheduler.Queues.Types
 {
-  public class RounRobinQueueType : QueueType
+  public class RoundRobinQueueType : QueueType
   {
     private int period;
     
-    public RounRobinQueueType(int period)
+    public RoundRobinQueueType(int period)
     {
       this.period = period;
     }

@@ -89,9 +89,9 @@ namespace ProcessScheduler.Scheduler
             {
               switchProcess = (runningProcess.getPriority() > queue.getFirst().getPriority());
             }
-            else if (queue.getQueueType() is RounRobinQueueType)
+            else if (queue.getQueueType() is RoundRobinQueueType)
             {
-              switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RounRobinQueueType)queue.getQueueType()).getPeriod();
+              switchProcess = (execution.getEndTime() - execution.getStartTime()) >= ((RoundRobinQueueType)queue.getQueueType()).getPeriod();
             }
 
             if (switchProcess)
