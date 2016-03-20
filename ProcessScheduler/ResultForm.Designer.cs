@@ -34,9 +34,9 @@
       // panel
       // 
       this.panel.AutoSize = true;
-      this.panel.Location = new System.Drawing.Point(169, 37);
+      this.panel.Location = new System.Drawing.Point(12, 69);
       this.panel.Name = "panel";
-      this.panel.Size = new System.Drawing.Size(120, 101);
+      this.panel.Size = new System.Drawing.Size(120, 76);
       this.panel.TabIndex = 1;
       this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
       // 

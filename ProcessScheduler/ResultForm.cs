@@ -34,7 +34,7 @@ namespace ProcessScheduler
       using (Graphics g = e.Graphics)
       {
         Pen pen = new Pen(Color.Black, 3);
-        SolidBrush brush = new SolidBrush(Color.Red);
+        SolidBrush brush = new SolidBrush(Color.Black);
         StringFormat sf = new StringFormat();
         sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 
@@ -68,7 +68,7 @@ namespace ProcessScheduler
     {
       //panel.Height = this.Height;
       panel.Width = this.Width;
-      panel.Top = 0;
+      //panel.Top = 0;
       panel.Left = 0;
       panel.Refresh();
     }
