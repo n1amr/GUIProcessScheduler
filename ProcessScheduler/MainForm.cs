@@ -28,6 +28,8 @@ namespace ProcessScheduler
         processes.Add(p);
         lstBox_Processes.Items.Add(p.getProcessName());
       }
+
+      btn_Calculate_Click(this,null);
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
