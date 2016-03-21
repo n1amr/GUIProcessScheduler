@@ -32,7 +32,6 @@ namespace ProcessScheduler.Scheduler
       insertions.Add(new Insertion(process, process.ArrivalTime));
     }
 
-
     private void printQueue()
     {
       foreach (Process process in queue)
@@ -40,7 +39,6 @@ namespace ProcessScheduler.Scheduler
         Console.WriteLine("    " + process);
       }
     }
-
 
     public List<Execution> StartExecution()
     {
@@ -74,21 +72,13 @@ namespace ProcessScheduler.Scheduler
             bool switchProcess = false;
 
             if (queue.QueueType == QueueType.FCFS)
-            {
               switchProcess = false;
-            }
             else if (queue.QueueType == QueueType.SHORTEST_REMAINING_TIME)
-            {
               switchProcess = (runningProcess.GetRemainingTime() > queue.getFirst().GetRemainingTime());
-            }
             else if (queue.QueueType == QueueType.PRIORITY)
-            {
               switchProcess = (runningProcess.Priority > queue.getFirst().Priority);
-            }
             else if (queue.QueueType is RoundRobinQueueType)
-            {
               switchProcess = (execution.EndTime - execution.StartTime) >= ((RoundRobinQueueType)queue.QueueType).Quantum;
-            }
 
             if (switchProcess)
             {
@@ -101,6 +91,13 @@ namespace ProcessScheduler.Scheduler
               execution = new Execution(runningProcess, t, t);
             }
           }
+        }
+        // split consecutive quantums for only one process case
+        else if (queue.isEmpty() && queue.QueueType is RoundRobinQueueType && execution != null && (execution.EndTime - execution.StartTime) >= ((RoundRobinQueueType)queue.QueueType).Quantum)
+        {
+          executionList.Add(execution);
+          runningProcess.AddExecution(execution);
+          execution = new Execution(runningProcess, t, t);
         }
 
         //Console.WriteLine(" -> " + runningProcess);

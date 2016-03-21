@@ -25,13 +25,8 @@ namespace ProcessScheduler
       InitializeComponent();
       this.executionList = executionList;
 
-      totalTime = 0;
-      processesCount = 0;
-      foreach (CPUScheduler.Execution exec in executionList)
-      {
-        totalTime += exec.EndTime - exec.StartTime;
-        processesCount++;
-      }
+      totalTime = executionList[executionList.Count - 1].EndTime;
+      processesCount = executionList.Count;
 
       DataTable dataTable = new DataTable();
       dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
@@ -65,35 +60,46 @@ namespace ProcessScheduler
       base.OnPaint(e);
       using (Graphics g = e.Graphics)
       {
-        Pen pen = new Pen(Color.Black, 1);
-        SolidBrush brush = new SolidBrush(Color.Black);
-        StringFormat sf = new StringFormat();
-        sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
-
-        int HMargin = 50;
-        Point leftTop = new Point(HMargin, panel.Height * 5 / 100);
+        int lastTime = 0;
         foreach (CPUScheduler.Execution exec in executionList)
         {
-          int height = panel.Height * 50 / 100;
-          int width = (panel.Width - HMargin * 2) * (exec.EndTime - exec.StartTime) / totalTime;
-          Point leftBottom = new Point(leftTop.X, leftTop.Y + height);
-          Point rightBottom = new Point(leftTop.X + width, leftTop.Y + height);
-          Point rightTop = new Point(leftTop.X + width, leftTop.Y);
-          Point centerPoint = new Point(leftTop.X + width / 2, leftTop.Y + height / 2);
-          Point namePosition = centerPoint;
-          Point timePosition = rightBottom;
+          if (exec.StartTime > lastTime)
+            DrawSlot(g, panel, lastTime, exec.StartTime, totalTime, "N/A");
 
-          g.DrawString(exec.Process.Name, this.Font, brush, namePosition, sf);
-          g.DrawString(exec.EndTime.ToString(), this.Font, brush, timePosition, sf);
-
-          g.DrawLine(pen, leftTop, leftBottom);
-          g.DrawLine(pen, rightTop, rightBottom);
-          g.DrawLine(pen, leftTop, rightTop);
-          g.DrawLine(pen, leftBottom, rightBottom);
-
-          leftTop.X += width;
+          DrawSlot(g, panel, exec.StartTime, exec.EndTime, totalTime, exec.Process.Name);
+          lastTime = exec.EndTime;
         }
       }
+    }
+
+    private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string process_text)
+    {
+      Pen pen = new Pen(Color.Black, 2);
+      SolidBrush brush = new SolidBrush(Color.Black);
+      StringFormat sf = new StringFormat();
+      sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+
+      int HMargin = 50;
+      int total_width = panel.Width - HMargin * 2;
+
+      int height = panel.Height * 50 / 100;
+      int width = total_width * (end_time - start_time) / total_time;
+
+      Point leftTop = new Point(HMargin + total_width * start_time / total_time, panel.Height * 5 / 100);
+      Point leftBottom = new Point(leftTop.X, leftTop.Y + height);
+      Point rightBottom = new Point(leftTop.X + width, leftTop.Y + height);
+      Point rightTop = new Point(leftTop.X + width, leftTop.Y);
+      Point centerPoint = new Point(leftTop.X + width / 2, leftTop.Y + height / 2);
+      Point namePosition = centerPoint;
+      Point timePosition = rightBottom;
+
+      g.DrawString(process_text, this.Font, brush, namePosition, sf);
+      g.DrawString(end_time.ToString(), this.Font, brush, timePosition, sf);
+
+      g.DrawLine(pen, leftTop, leftBottom);
+      g.DrawLine(pen, rightTop, rightBottom);
+      g.DrawLine(pen, leftTop, rightTop);
+      g.DrawLine(pen, leftBottom, rightBottom);
     }
 
     private void ResultForm_Resize(object sender, EventArgs e)
