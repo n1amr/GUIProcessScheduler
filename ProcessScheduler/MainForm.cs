@@ -26,6 +26,7 @@ namespace ProcessScheduler
       for (int i = 1; i <= 15; i++)
       {
         Process p = new Process(String.Format("Process {0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
+        p.Color = Color.FromArgb((int)(random.Next(0xffffff)));
         lstBox_Processes.Items.Add(p);
       }
 

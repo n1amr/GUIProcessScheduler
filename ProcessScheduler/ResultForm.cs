@@ -19,11 +19,13 @@ namespace ProcessScheduler
     private List<CPUScheduler.Execution> executionList;
     private int totalTime;
     private int processesCount;
+    private List<Process> processes;
 
     public ResultForm(List<Process> processes, List<CPUScheduler.Execution> executionList, bool priority = false)
     {
       InitializeComponent();
       this.executionList = executionList;
+      this.processes = processes;
 
       totalTime = executionList[executionList.Count - 1].EndTime;
       processesCount = executionList.Count;
@@ -37,6 +39,7 @@ namespace ProcessScheduler
       dataTable.Columns.Add(new DataColumn("Departure time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Turn around time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Waiting time", typeof(int)));
+      dataTable.Columns.Add(new DataColumn("Color", typeof(int)));
 
       int totalWaitingTime = 0;
       foreach (Process p in processes)
@@ -60,23 +63,24 @@ namespace ProcessScheduler
       base.OnPaint(e);
       using (Graphics g = e.Graphics)
       {
-        DrawSlot(g, panel, 0, 0, totalTime, "");
+        DrawSlot(g, panel, 0, 0, totalTime, "", Color.White);
         int lastTime = 0;
         foreach (CPUScheduler.Execution exec in executionList)
         {
           if (exec.StartTime > lastTime)
-            DrawSlot(g, panel, lastTime, exec.StartTime, totalTime, "N/A");
+            DrawSlot(g, panel, lastTime, exec.StartTime, totalTime, "N/A", Color.Black);
 
-          DrawSlot(g, panel, exec.StartTime, exec.EndTime, totalTime, exec.Process.Name);
+          DrawSlot(g, panel, exec.StartTime, exec.EndTime, totalTime, exec.Process.Name, exec.Process.Color);
           lastTime = exec.EndTime;
         }
       }
     }
 
-    private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string slot_text)
+    private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string slot_text, Color color)
     {
       Pen pen = new Pen(Color.Black, 2);
-      SolidBrush brush = new SolidBrush(Color.Black);
+      Color c2 = Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B);
+      SolidBrush brush = new SolidBrush(c2);
       StringFormat sf = new StringFormat();
       sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 
@@ -94,6 +98,13 @@ namespace ProcessScheduler
       Point textPosition = centerPoint;
       Point timePosition = rightBottom;
 
+      g.FillRectangle(new SolidBrush(color), leftTop.X, leftTop.Y, width, height);
+
+      g.DrawLine(pen, leftTop, leftBottom);
+      g.DrawLine(pen, rightTop, rightBottom);
+      g.DrawLine(pen, leftTop, rightTop);
+      g.DrawLine(pen, leftBottom, rightBottom);
+
       // print process name
       if (slot_text.Count() * 6 > width)
         slot_text = "..";
@@ -107,11 +118,6 @@ namespace ProcessScheduler
         time_label = "";
       timePosition.X += time_label.Count() * 6;
       g.DrawString(time_label, this.Font, brush, timePosition, sf);
-
-      g.DrawLine(pen, leftTop, leftBottom);
-      g.DrawLine(pen, rightTop, rightBottom);
-      g.DrawLine(pen, leftTop, rightTop);
-      g.DrawLine(pen, leftBottom, rightBottom);
     }
 
     private void ResultForm_Resize(object sender, EventArgs e)

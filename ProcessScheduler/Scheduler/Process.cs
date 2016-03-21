@@ -16,9 +16,9 @@ namespace ProcessScheduler
     private int remainingTime { get; set; }
     public int Priority { get; set; }
     public int ArrivalTime { get; set; }
+    public System.Drawing.Color Color { get; set; }
     private List<CPUScheduler.Execution> ExecutionList;
     private int departureTime;
-
     public Process(String processName, int pid, int time, int priority, int arrivalTime)
     {
       this.Name = processName;
@@ -26,6 +26,8 @@ namespace ProcessScheduler
       this.BurstTime = time;
       this.Priority = priority;
       this.ArrivalTime = arrivalTime;
+      this.Color = System.Drawing.Color.FromArgb(0xffffff);
+
 
       ResetCalculations();
     }

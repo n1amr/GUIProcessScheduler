@@ -28,6 +28,8 @@ namespace ProcessScheduler
       numUpDn_ArrivalTime.Value = process.ArrivalTime;
 
       numUpDn_Prioriity.Enabled = priority;
+
+      btn_ColorChange.BackColor = process.Color;
     }
 
     private void btn_Ok_Click(object sender, EventArgs e)
@@ -59,6 +61,13 @@ namespace ProcessScheduler
     public Process getProcess()
     {
       return process;
+    }
+
+    private void btn_ColorChange_Click(object sender, EventArgs e)
+    {
+      colorDialog.ShowDialog();
+      process.Color = colorDialog.Color;
+      btn_ColorChange.BackColor = colorDialog.Color;
     }
   }
 }

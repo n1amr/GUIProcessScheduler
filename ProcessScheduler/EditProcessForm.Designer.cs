@@ -38,6 +38,9 @@
       this.numUpDn_Prioriity = new System.Windows.Forms.NumericUpDown();
       this.btn_Ok = new System.Windows.Forms.Button();
       this.btn_Cancel = new System.Windows.Forms.Button();
+      this.colorDialog = new System.Windows.Forms.ColorDialog();
+      this.btn_ColorChange = new System.Windows.Forms.Button();
+      this.label5 = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_BurstTime)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_ArrivalTime)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Prioriity)).BeginInit();
@@ -63,6 +66,11 @@
       // numUpDn_BurstTime
       // 
       this.numUpDn_BurstTime.Location = new System.Drawing.Point(96, 36);
+      this.numUpDn_BurstTime.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
       this.numUpDn_BurstTime.Minimum = new decimal(new int[] {
             1,
             0,
@@ -76,16 +84,19 @@
             0,
             0,
             0});
-      this.numUpDn_BurstTime.Maximum = (int)1e6;
       this.numUpDn_BurstTime.ValueChanged += new System.EventHandler(this.numUpDn_BurstTime_ValueChanged);
       // 
       // numUpDn_ArrivalTime
       // 
       this.numUpDn_ArrivalTime.Location = new System.Drawing.Point(96, 62);
+      this.numUpDn_ArrivalTime.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
       this.numUpDn_ArrivalTime.Name = "numUpDn_ArrivalTime";
       this.numUpDn_ArrivalTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_ArrivalTime.TabIndex = 3;
-      this.numUpDn_ArrivalTime.Maximum = (int)1e6;
       this.numUpDn_ArrivalTime.ValueChanged += new System.EventHandler(this.numUpDn_ArrivalTime_ValueChanged);
       // 
       // label2
@@ -132,12 +143,11 @@
             0,
             0,
             -2147483648});
-      this.numUpDn_BurstTime.Maximum = (int)1e6;
       this.numUpDn_Prioriity.ValueChanged += new System.EventHandler(this.numUpDn_Prioriity_ValueChanged);
       // 
       // btn_Ok
       // 
-      this.btn_Ok.Location = new System.Drawing.Point(36, 123);
+      this.btn_Ok.Location = new System.Drawing.Point(35, 142);
       this.btn_Ok.Name = "btn_Ok";
       this.btn_Ok.Size = new System.Drawing.Size(75, 23);
       this.btn_Ok.TabIndex = 8;
@@ -148,12 +158,30 @@
       // btn_Cancel
       // 
       this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.btn_Cancel.Location = new System.Drawing.Point(117, 123);
+      this.btn_Cancel.Location = new System.Drawing.Point(116, 142);
       this.btn_Cancel.Name = "btn_Cancel";
       this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
       this.btn_Cancel.TabIndex = 9;
       this.btn_Cancel.Text = "Cancel";
       this.btn_Cancel.UseVisualStyleBackColor = true;
+      // 
+      // btn_ColorChange
+      // 
+      this.btn_ColorChange.Location = new System.Drawing.Point(96, 113);
+      this.btn_ColorChange.Name = "btn_ColorChange";
+      this.btn_ColorChange.Size = new System.Drawing.Size(119, 23);
+      this.btn_ColorChange.TabIndex = 10;
+      this.btn_ColorChange.UseVisualStyleBackColor = true;
+      this.btn_ColorChange.Click += new System.EventHandler(this.btn_ColorChange_Click);
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(12, 113);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(32, 13);
+      this.label5.TabIndex = 11;
+      this.label5.Text = "Color";
       // 
       // EditProcessForm
       // 
@@ -161,7 +189,9 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.btn_Cancel;
-      this.ClientSize = new System.Drawing.Size(227, 158);
+      this.ClientSize = new System.Drawing.Size(227, 173);
+      this.Controls.Add(this.label5);
+      this.Controls.Add(this.btn_ColorChange);
       this.Controls.Add(this.btn_Cancel);
       this.Controls.Add(this.btn_Ok);
       this.Controls.Add(this.label4);
@@ -197,6 +227,9 @@
     private System.Windows.Forms.NumericUpDown numUpDn_Prioriity;
     private System.Windows.Forms.Button btn_Ok;
     private System.Windows.Forms.Button btn_Cancel;
+    private System.Windows.Forms.ColorDialog colorDialog;
+    private System.Windows.Forms.Button btn_ColorChange;
+    private System.Windows.Forms.Label label5;
   }
 }
 
