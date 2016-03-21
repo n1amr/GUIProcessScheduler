@@ -31,7 +31,7 @@ namespace ProcessScheduler
     }
 
     public Process(int pid)
-      : this(null, pid, 0, -1, 0)
+      : this(null, pid, 1, -1, 0)
     {
     }
 

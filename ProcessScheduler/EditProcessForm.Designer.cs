@@ -28,9 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
       this.txtBox_ProcessName = new System.Windows.Forms.TextBox();
-      this.imageList1 = new System.Windows.Forms.ImageList(this.components);
       this.label1 = new System.Windows.Forms.Label();
       this.numUpDn_BurstTime = new System.Windows.Forms.NumericUpDown();
       this.numUpDn_ArrivalTime = new System.Windows.Forms.NumericUpDown();
@@ -53,12 +51,6 @@
       this.txtBox_ProcessName.TabIndex = 0;
       this.txtBox_ProcessName.TextChanged += new System.EventHandler(this.txtBox_ProcessName_TextChanged);
       // 
-      // imageList1
-      // 
-      this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-      this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-      this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-      // 
       // label1
       // 
       this.label1.AutoSize = true;
@@ -71,9 +63,20 @@
       // numUpDn_BurstTime
       // 
       this.numUpDn_BurstTime.Location = new System.Drawing.Point(96, 36);
+      this.numUpDn_BurstTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
       this.numUpDn_BurstTime.Name = "numUpDn_BurstTime";
       this.numUpDn_BurstTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_BurstTime.TabIndex = 2;
+      this.numUpDn_BurstTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      this.numUpDn_BurstTime.Maximum = (int)1e6;
       this.numUpDn_BurstTime.ValueChanged += new System.EventHandler(this.numUpDn_BurstTime_ValueChanged);
       // 
       // numUpDn_ArrivalTime
@@ -82,6 +85,7 @@
       this.numUpDn_ArrivalTime.Name = "numUpDn_ArrivalTime";
       this.numUpDn_ArrivalTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_ArrivalTime.TabIndex = 3;
+      this.numUpDn_ArrivalTime.Maximum = (int)1e6;
       this.numUpDn_ArrivalTime.ValueChanged += new System.EventHandler(this.numUpDn_ArrivalTime_ValueChanged);
       // 
       // label2
@@ -128,6 +132,7 @@
             0,
             0,
             -2147483648});
+      this.numUpDn_BurstTime.Maximum = (int)1e6;
       this.numUpDn_Prioriity.ValueChanged += new System.EventHandler(this.numUpDn_Prioriity_ValueChanged);
       // 
       // btn_Ok
@@ -183,7 +188,6 @@
     #endregion
 
     private System.Windows.Forms.TextBox txtBox_ProcessName;
-    private System.Windows.Forms.ImageList imageList1;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.NumericUpDown numUpDn_BurstTime;
     private System.Windows.Forms.NumericUpDown numUpDn_ArrivalTime;

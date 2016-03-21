@@ -14,12 +14,6 @@ namespace ProcessScheduler
   {
     public Process process;
 
-    //public EditProcessForm()
-    //{
-    //  InitializeComponent();
-    //  process = new Process(0);
-    //}
-
     public EditProcessForm(Process process, bool priority = false)
     {
       InitializeComponent();
