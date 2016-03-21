@@ -39,7 +39,6 @@ namespace ProcessScheduler
       dataTable.Columns.Add(new DataColumn("Departure time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Turn around time", typeof(int)));
       dataTable.Columns.Add(new DataColumn("Waiting time", typeof(int)));
-      dataTable.Columns.Add(new DataColumn("Color", typeof(int)));
 
       int totalWaitingTime = 0;
       foreach (Process p in processes)
@@ -50,7 +49,6 @@ namespace ProcessScheduler
           dataTable.Rows.Add(new object[] { p.Name, p.BurstTime, p.ArrivalTime, p.GetDepartureTime(), p.GetTurnAroundTime(), p.GetWaitingTime() });
         totalWaitingTime += p.GetWaitingTime();
       }
-
       dataGridView.DataSource = dataTable;
 
       lbl.Text = String.Format("Average Waiting Time = {0}", (float)totalWaitingTime / processesCount);

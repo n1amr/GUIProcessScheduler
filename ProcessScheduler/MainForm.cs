@@ -25,8 +25,7 @@ namespace ProcessScheduler
       Random random = new Random(System.Environment.TickCount);
       for (int i = 1; i <= 15; i++)
       {
-        Process p = new Process(String.Format("Process {0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
-        p.Color = Color.FromArgb((int)(random.Next(0xffffff)));
+        Process p = new Process(String.Format("P{0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
         lstBox_Processes.Items.Add(p);
       }
 
@@ -98,8 +97,7 @@ namespace ProcessScheduler
           processes.Add(p);
 
         ResultForm resultForm = new ResultForm(processes, executionList, queue_type == 2);
-        resultForm.ShowDialog();
-
+        resultForm.Show();
       }
 
       foreach (Process p in lstBox_Processes.Items)
