@@ -23,9 +23,9 @@ namespace ProcessScheduler
       cmb_QueueType.SelectedIndex = 0;
 
       Random random = new Random(System.Environment.TickCount);
-      for (int i = 1; i <= 5; i++)
+      for (int i = 1; i <= 15; i++)
       {
-        Process p = new Process(String.Format("P{0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
+        Process p = new Process(String.Format("Process {0}", i), i, random.Next(1, 10), random.Next(1, 10), i + random.Next(0, 20));
         lstBox_Processes.Items.Add(p);
       }
 
