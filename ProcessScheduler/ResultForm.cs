@@ -103,8 +103,8 @@ namespace ProcessScheduler
 
       // print time label
       string time_label = end_time.ToString();
-      if ((time_label.Count() + 1) * 6 > width)
-        time_label = "";      
+      if ((time_label.Count() + 1) * 6 > width && end_time != 0)
+        time_label = "";
       timePosition.X += time_label.Count() * 6;
       g.DrawString(time_label, this.Font, brush, timePosition, sf);
 

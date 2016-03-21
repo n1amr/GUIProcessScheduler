@@ -72,6 +72,11 @@
       // numUpDn_Quantum
       // 
       this.numUpDn_Quantum.Location = new System.Drawing.Point(179, 53);
+      this.numUpDn_Quantum.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
       this.numUpDn_Quantum.Minimum = new decimal(new int[] {
             1,
             0,
