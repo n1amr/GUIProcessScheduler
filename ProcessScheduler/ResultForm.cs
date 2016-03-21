@@ -75,7 +75,7 @@ namespace ProcessScheduler
 
     private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string process_text)
     {
-      Pen pen = new Pen(Color.Black, 3);
+      Pen pen = new Pen(Color.Black, 2);
       SolidBrush brush = new SolidBrush(Color.Black);
       StringFormat sf = new StringFormat();
       sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
@@ -94,12 +94,19 @@ namespace ProcessScheduler
       Point textPosition = centerPoint;
       Point timePosition = rightBottom;
 
+      // print process name
+      if (process_text.Count() * 6 > width)
+        process_text = "..";
       textPosition.X += (int)(process_text.Count() * 6 / 2);
       textPosition.Y -= 6;
       g.DrawString(process_text, this.Font, brush, textPosition, sf);
 
-      timePosition.X += end_time.ToString().Count() * 6;
-      g.DrawString(end_time.ToString(), this.Font, brush, timePosition, sf);
+      // print time label
+      string time_label = end_time.ToString();
+      if ((time_label.Count() + 1) * 6 > width)
+        time_label = "";      
+      timePosition.X += time_label.Count() * 6;
+      g.DrawString(time_label, this.Font, brush, timePosition, sf);
 
       g.DrawLine(pen, leftTop, leftBottom);
       g.DrawLine(pen, rightTop, rightBottom);
