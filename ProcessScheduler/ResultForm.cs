@@ -90,10 +90,12 @@ namespace ProcessScheduler
       Point rightBottom = new Point(leftTop.X + width, leftTop.Y + height);
       Point rightTop = new Point(leftTop.X + width, leftTop.Y);
       Point centerPoint = new Point(leftTop.X + width / 2, leftTop.Y + height / 2);
-      Point namePosition = centerPoint;
+      Point textPosition = centerPoint;
       Point timePosition = rightBottom;
 
-      g.DrawString(process_text, this.Font, brush, namePosition, sf);
+      textPosition.X += (int)(process_text.Count() * 4.5);
+      textPosition.Y -= 5;
+      g.DrawString(process_text, this.Font, brush, textPosition, sf);
       g.DrawString(end_time.ToString(), this.Font, brush, timePosition, sf);
 
       g.DrawLine(pen, leftTop, leftBottom);
