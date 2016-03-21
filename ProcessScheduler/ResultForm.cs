@@ -73,7 +73,7 @@ namespace ProcessScheduler
       }
     }
 
-    private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string process_text)
+    private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string slot_text)
     {
       Pen pen = new Pen(Color.Black, 2);
       SolidBrush brush = new SolidBrush(Color.Black);
@@ -95,11 +95,11 @@ namespace ProcessScheduler
       Point timePosition = rightBottom;
 
       // print process name
-      if (process_text.Count() * 6 > width)
-        process_text = "..";
-      textPosition.X += (int)(process_text.Count() * 6 / 2);
+      if (slot_text.Count() * 6 > width)
+        slot_text = "..";
+      textPosition.X += (int)(slot_text.Count() * 6 / 2);
       textPosition.Y -= 6;
-      g.DrawString(process_text, this.Font, brush, textPosition, sf);
+      g.DrawString(slot_text, this.Font, brush, textPosition, sf);
 
       // print time label
       string time_label = end_time.ToString();
