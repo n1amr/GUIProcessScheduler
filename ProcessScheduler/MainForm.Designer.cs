@@ -204,6 +204,7 @@
       this.lstBox_Processes.Name = "lstBox_Processes";
       this.lstBox_Processes.Size = new System.Drawing.Size(152, 173);
       this.lstBox_Processes.TabIndex = 0;
+      this.lstBox_Processes.SelectedIndexChanged += new System.EventHandler(this.lstBox_Processes_SelectedIndexChanged);
       // 
       // btn_Calculate
       // 

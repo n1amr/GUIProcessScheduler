@@ -77,10 +77,10 @@ namespace ProcessScheduler
     private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string slot_text, Color color)
     {
       Pen pen = new Pen(Color.Black, 2);
-      
+
       SolidBrush text_brush = new SolidBrush(Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B));
       SolidBrush time_brush = new SolidBrush(Color.Black);
-      
+
       StringFormat sf = new StringFormat();
       sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 

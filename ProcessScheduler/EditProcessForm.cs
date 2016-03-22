@@ -34,6 +34,9 @@ namespace ProcessScheduler
 
     private void btn_Ok_Click(object sender, EventArgs e)
     {
+      if (process.Name == null)
+        process.Name = "Process";
+      
       this.DialogResult = DialogResult.OK;
       this.Close();
     }

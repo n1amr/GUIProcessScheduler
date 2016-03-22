@@ -29,7 +29,7 @@ namespace ProcessScheduler
         lstBox_Processes.Items.Add(p);
       }
 
-      CheckListSize();
+      CheckButtonsStatus();
     }
 
     private void btn_Add_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace ProcessScheduler
         Process process = form.process;
         lstBox_Processes.Items.Add(process);
       }
-      CheckListSize();
+      CheckButtonsStatus();
     }
 
     private void btn_Edit_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace ProcessScheduler
       if (index >= 0)
         lstBox_Processes.Items.RemoveAt(index);
 
-      CheckListSize();
+      CheckButtonsStatus();
     }
 
     private void btn_Calculate_Click(object sender, EventArgs e)
@@ -99,15 +99,6 @@ namespace ProcessScheduler
         ResultForm resultForm = new ResultForm(processes, executionList, queue_type == 2);
         resultForm.Show();
       }
-
-      foreach (Process p in lstBox_Processes.Items)
-      {
-        Console.WriteLine(p);
-        Console.WriteLine("Arrival: " + p.ArrivalTime);
-        Console.WriteLine("Departure: " + p.GetDepartureTime());
-        Console.WriteLine("TurnAround: " + p.GetTurnAroundTime());
-        Console.WriteLine("Waiting: " + p.GetWaitingTime());
-      }
     }
 
     private void cmb_QueueType_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,13 +110,9 @@ namespace ProcessScheduler
         chk_Preemptive.Checked = false;
       }
       else if (selection.Equals("SJF"))
-      {
         queue_type = 1;
-      }
       else if (selection.Equals("Priority"))
-      {
         queue_type = 2;
-      }
       else if (selection.Equals("Round Robin"))
       {
         queue_type = 3;
@@ -165,18 +152,23 @@ namespace ProcessScheduler
     {
       while (lstBox_Processes.Items.Count != 0)
         lstBox_Processes.Items.RemoveAt(0);
-      CheckListSize();
+      CheckButtonsStatus();
     }
 
-    private void CheckListSize()
+    private void CheckButtonsStatus()
     {
-      bool empty = lstBox_Processes.Items.Count == 0;
+      bool enable = lstBox_Processes.SelectedIndex != -1;
 
-      btn_Edit.Enabled = !empty;
-      btn_Remove.Enabled = !empty;
-      btn_RemoveAll.Enabled = !empty;
-      btn_MoveUp.Enabled = !empty;
-      btn_MoveDown.Enabled = !empty;
+      btn_Edit.Enabled = enable;
+      btn_Remove.Enabled = enable;
+      btn_RemoveAll.Enabled = enable || lstBox_Processes.Items.Count != 0;
+      btn_MoveUp.Enabled = enable;
+      btn_MoveDown.Enabled = enable;
+    }
+
+    private void lstBox_Processes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      CheckButtonsStatus();
     }
   }
 }
