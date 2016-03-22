@@ -42,9 +42,11 @@
       this.btn_Add = new System.Windows.Forms.Button();
       this.lstBox_Processes = new System.Windows.Forms.ListBox();
       this.btn_Calculate = new System.Windows.Forms.Button();
+      this.dataGridView = new System.Windows.Forms.DataGridView();
       this.groupBox1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).BeginInit();
       this.groupBox2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
       this.SuspendLayout();
       // 
       // groupBox1
@@ -204,6 +206,7 @@
       this.lstBox_Processes.Name = "lstBox_Processes";
       this.lstBox_Processes.Size = new System.Drawing.Size(152, 173);
       this.lstBox_Processes.TabIndex = 0;
+      this.lstBox_Processes.SelectedIndexChanged += new System.EventHandler(this.lstBox_Processes_SelectedIndexChanged);
       // 
       // btn_Calculate
       // 
@@ -215,12 +218,24 @@
       this.btn_Calculate.UseVisualStyleBackColor = true;
       this.btn_Calculate.Click += new System.EventHandler(this.btn_Calculate_Click);
       // 
+      // dataGridView
+      // 
+      this.dataGridView.AllowUserToResizeColumns = false;
+      this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView.Location = new System.Drawing.Point(270, 12);
+      this.dataGridView.Name = "dataGridView";
+      this.dataGridView.Size = new System.Drawing.Size(428, 322);
+      this.dataGridView.TabIndex = 3;
+      this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+      this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+      // 
       // MainForm
       // 
       this.AcceptButton = this.btn_Calculate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(271, 346);
+      this.ClientSize = new System.Drawing.Size(710, 346);
+      this.Controls.Add(this.dataGridView);
       this.Controls.Add(this.btn_Calculate);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
@@ -234,6 +249,7 @@
       this.groupBox1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numUpDn_Quantum)).EndInit();
       this.groupBox2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -254,5 +270,6 @@
     private System.Windows.Forms.Button btn_MoveDown;
     private System.Windows.Forms.Button btn_MoveUp;
     private System.Windows.Forms.Button btn_RemoveAll;
+    private System.Windows.Forms.DataGridView dataGridView;
   }
 }
