@@ -13,7 +13,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       Queue.QueueNode newNode = new Queue.QueueNode(process);
 
       // Before head
-      if (process.Priority < head.Process.Priority)
+      if (isBetter(process, head.Process))
       {
         newNode.Next = head;
         return newNode;
@@ -22,7 +22,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       // Search for the node before the inserted one
       while (head.Next != null)
       {
-        if (process.Priority < head.Next.Process.Priority)
+        if (isBetter(process, head.Next.Process))
         {
           newNode.Next = head.Next;
           head.Next = newNode;
@@ -35,6 +35,12 @@ namespace ProcessScheduler.Scheduler.Queues.Types
       head.Next = newNode;
 
       return null;
+    }
+
+    private bool isBetter(Process first, Process second)
+    {
+      return (first.Priority < second.Priority)
+        || (first.Priority == second.Priority && first.ArrivalTime < second.ArrivalTime);
     }
   }
 }

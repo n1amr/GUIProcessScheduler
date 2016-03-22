@@ -28,7 +28,7 @@ namespace ProcessScheduler
       this.processes = processes;
 
       totalTime = executionList[executionList.Count - 1].EndTime;
-      processesCount = executionList.Count;
+      processesCount = processes.Count;
 
       DataTable dataTable = new DataTable();
       dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
@@ -77,8 +77,10 @@ namespace ProcessScheduler
     private void DrawSlot(Graphics g, Panel panel, int start_time, int end_time, int total_time, string slot_text, Color color)
     {
       Pen pen = new Pen(Color.Black, 2);
-      Color c2 = Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B);
-      SolidBrush brush = new SolidBrush(c2);
+      
+      SolidBrush text_brush = new SolidBrush(Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B));
+      SolidBrush time_brush = new SolidBrush(Color.Black);
+      
       StringFormat sf = new StringFormat();
       sf.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 
@@ -108,14 +110,14 @@ namespace ProcessScheduler
         slot_text = "..";
       textPosition.X += (int)(slot_text.Count() * 6 / 2);
       textPosition.Y -= 6;
-      g.DrawString(slot_text, this.Font, brush, textPosition, sf);
+      g.DrawString(slot_text, this.Font, text_brush, textPosition, sf);
 
       // print time label
       string time_label = end_time.ToString();
       if ((time_label.Count() + 1) * 6 > width && end_time != 0)
         time_label = "";
       timePosition.X += time_label.Count() * 6;
-      g.DrawString(time_label, this.Font, brush, timePosition, sf);
+      g.DrawString(time_label, this.Font, time_brush, timePosition, sf);
     }
 
     private void ResultForm_Resize(object sender, EventArgs e)
