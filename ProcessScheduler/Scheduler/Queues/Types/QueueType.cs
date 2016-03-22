@@ -16,7 +16,7 @@ namespace ProcessScheduler.Scheduler.Queues.Types
 
     public static readonly QueueType FCFS = new FCFSQueueType();
     public static readonly QueueType PRIORITY = new PriorityQueueType();
-    public static readonly QueueType SHORTEST_REMAINING_TIME = new SRTQueueType();
+    public static readonly QueueType SJF = new SJFQueueType();
 
   }
 }

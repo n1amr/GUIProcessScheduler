@@ -73,7 +73,7 @@ namespace ProcessScheduler.Scheduler
 
             if (queue.QueueType == QueueType.FCFS)
               switchProcess = false;
-            else if (queue.QueueType == QueueType.SHORTEST_REMAINING_TIME)
+            else if (queue.QueueType == QueueType.SJF)
               switchProcess = (runningProcess.GetRemainingTime() > queue.getFirst().GetRemainingTime());
             else if (queue.QueueType == QueueType.PRIORITY)
               switchProcess = (runningProcess.Priority > queue.getFirst().Priority);

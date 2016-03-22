@@ -80,7 +80,7 @@ namespace ProcessScheduler
         if (queue_type == 0)
           queueType = QueueType.FCFS;
         else if (queue_type == 1)
-          queueType = QueueType.SHORTEST_REMAINING_TIME;
+          queueType = QueueType.SJF;
         else if (queue_type == 2)
           queueType = QueueType.PRIORITY;
         else if (queue_type == 3)

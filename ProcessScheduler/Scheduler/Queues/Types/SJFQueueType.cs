@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcessScheduler.Scheduler.Queues.Types
 {
-  public class SRTQueueType : QueueType
+  public class SJFQueueType : QueueType
   {
     public override Queue.QueueNode Add(Queue.QueueNode head, Process process)
     {
