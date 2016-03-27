@@ -72,5 +72,25 @@ namespace ProcessScheduler
       process.Color = colorDialog.Color;
       btn_ColorChange.BackColor = colorDialog.Color;
     }
+
+    private void numUpDn_BurstTime_Enter(object sender, EventArgs e)
+    {
+      numUpDn_BurstTime.Select(0, numUpDn_BurstTime.Value.ToString().Length);
+    }
+
+    private void numUpDn_ArrivalTime_Enter(object sender, EventArgs e)
+    {
+      numUpDn_ArrivalTime.Select(0, numUpDn_ArrivalTime.Value.ToString().Length);
+    }
+
+    private void numUpDn_Prioriity_Enter(object sender, EventArgs e)
+    {
+      numUpDn_Prioriity.Select(0, numUpDn_Prioriity.Value.ToString().Length);
+    }
+
+    private void txtBox_ProcessName_Enter(object sender, EventArgs e)
+    {
+      txtBox_ProcessName.Select(0, txtBox_ProcessName.Text.Length);
+    }
   }
 }

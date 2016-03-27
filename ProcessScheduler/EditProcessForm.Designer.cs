@@ -53,6 +53,7 @@
       this.txtBox_ProcessName.Size = new System.Drawing.Size(120, 20);
       this.txtBox_ProcessName.TabIndex = 0;
       this.txtBox_ProcessName.TextChanged += new System.EventHandler(this.txtBox_ProcessName_TextChanged);
+      this.txtBox_ProcessName.Enter += new System.EventHandler(this.txtBox_ProcessName_Enter);
       // 
       // label1
       // 
@@ -85,6 +86,7 @@
             0,
             0});
       this.numUpDn_BurstTime.ValueChanged += new System.EventHandler(this.numUpDn_BurstTime_ValueChanged);
+      this.numUpDn_BurstTime.Enter += new System.EventHandler(this.numUpDn_BurstTime_Enter);
       // 
       // numUpDn_ArrivalTime
       // 
@@ -98,6 +100,7 @@
       this.numUpDn_ArrivalTime.Size = new System.Drawing.Size(120, 20);
       this.numUpDn_ArrivalTime.TabIndex = 3;
       this.numUpDn_ArrivalTime.ValueChanged += new System.EventHandler(this.numUpDn_ArrivalTime_ValueChanged);
+      this.numUpDn_ArrivalTime.Enter += new System.EventHandler(this.numUpDn_ArrivalTime_Enter);
       // 
       // label2
       // 
@@ -144,6 +147,7 @@
             0,
             -2147483648});
       this.numUpDn_Prioriity.ValueChanged += new System.EventHandler(this.numUpDn_Prioriity_ValueChanged);
+      this.numUpDn_Prioriity.Enter += new System.EventHandler(this.numUpDn_Prioriity_Enter);
       // 
       // btn_Ok
       // 
