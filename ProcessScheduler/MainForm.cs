@@ -172,5 +172,33 @@ namespace ProcessScheduler
     {
       btn_Edit_Click(sender, e);
     }
+
+    
+    private void lstBox_Processes_DrawItem(object sender, DrawItemEventArgs e)
+    {
+      e.DrawBackground();
+      bool selected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected);
+
+      int index = e.Index;
+      if (index >= 0 && index < lstBox_Processes.Items.Count)
+      {
+        string text = ((Process)lstBox_Processes.Items[index]).Name;
+        Color color = ((Process)lstBox_Processes.Items[index]).Color;
+        
+        Graphics g = e.Graphics;
+        
+        SolidBrush backgroundBrush = new SolidBrush(!selected? color:Color.FromKnownColor(KnownColor.Blue));
+        //SolidBrush foregroundBrush = new SolidBrush(selected?Color.White :Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B));
+        SolidBrush foregroundBrush = new SolidBrush(selected ? Color.White : Color.Black);
+
+        //background:
+        g.FillRectangle(backgroundBrush, e.Bounds);
+
+        //text:
+        g.DrawString(text, e.Font, foregroundBrush, lstBox_Processes.GetItemRectangle(index).Location);
+      }
+
+      e.DrawFocusRectangle();
+    }
   }
 }
