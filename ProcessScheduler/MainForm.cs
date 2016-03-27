@@ -126,10 +126,13 @@ namespace ProcessScheduler
       int index = lstBox_Processes.SelectedIndex;
       if (index > 0)
       {
+        lstBox_Processes.SelectedIndices.Remove(index);
+
         object temp = lstBox_Processes.Items[index];
         lstBox_Processes.Items[index] = lstBox_Processes.Items[index - 1];
         lstBox_Processes.Items[index - 1] = temp;
-        lstBox_Processes.SelectedIndex--;
+
+        lstBox_Processes.SelectedIndex = index - 1;
       }
     }
 
@@ -138,10 +141,13 @@ namespace ProcessScheduler
       int index = lstBox_Processes.SelectedIndex;
       if (index + 1 < lstBox_Processes.Items.Count)
       {
+        lstBox_Processes.SelectedIndices.Remove(index);
+
         object temp = lstBox_Processes.Items[index];
         lstBox_Processes.Items[index] = lstBox_Processes.Items[index + 1];
         lstBox_Processes.Items[index + 1] = temp;
-        lstBox_Processes.SelectedIndex++;
+
+        lstBox_Processes.SelectedIndex = index + 1;
       }
     }
 
