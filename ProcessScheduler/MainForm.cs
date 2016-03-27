@@ -126,7 +126,6 @@ namespace ProcessScheduler
       int index = lstBox_Processes.SelectedIndex;
       if (index > 0)
       {
-
         object temp = lstBox_Processes.Items[index];
         lstBox_Processes.Items[index] = lstBox_Processes.Items[index - 1];
         lstBox_Processes.Items[index - 1] = temp;
@@ -155,12 +154,13 @@ namespace ProcessScheduler
     private void CheckButtonsStatus()
     {
       bool enable = lstBox_Processes.SelectedIndex != -1;
+      bool multiple_selection = lstBox_Processes.SelectedIndices.Count > 1;
 
       btn_Edit.Enabled = enable;
       btn_Remove.Enabled = enable;
       btn_RemoveAll.Enabled = enable || lstBox_Processes.Items.Count != 0;
-      btn_MoveUp.Enabled = enable;
-      btn_MoveDown.Enabled = enable;
+      btn_MoveUp.Enabled = enable && !multiple_selection;
+      btn_MoveDown.Enabled = enable && !multiple_selection;
     }
 
     private void lstBox_Processes_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,7 +173,6 @@ namespace ProcessScheduler
       btn_Edit_Click(sender, e);
     }
 
-    
     private void lstBox_Processes_DrawItem(object sender, DrawItemEventArgs e)
     {
       e.DrawBackground();
@@ -184,17 +183,13 @@ namespace ProcessScheduler
       {
         string text = ((Process)lstBox_Processes.Items[index]).Name;
         Color color = ((Process)lstBox_Processes.Items[index]).Color;
-        
+
         Graphics g = e.Graphics;
-        
-        SolidBrush backgroundBrush = new SolidBrush(!selected? color:Color.FromKnownColor(KnownColor.Blue));
-        //SolidBrush foregroundBrush = new SolidBrush(selected?Color.White :Color.FromArgb(255 - color.R, 255 - color.G, 255 - color.B));
+
+        SolidBrush backgroundBrush = new SolidBrush(!selected ? color : Color.FromKnownColor(KnownColor.Blue));
         SolidBrush foregroundBrush = new SolidBrush(selected ? Color.White : Color.Black);
 
-        //background:
         g.FillRectangle(backgroundBrush, e.Bounds);
-
-        //text:
         g.DrawString(text, e.Font, foregroundBrush, lstBox_Processes.GetItemRectangle(index).Location);
       }
 
