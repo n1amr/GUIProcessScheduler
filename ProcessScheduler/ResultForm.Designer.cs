@@ -45,6 +45,8 @@
       // 
       // dataGridView
       // 
+      this.dataGridView.AllowUserToAddRows = false;
+      this.dataGridView.AllowUserToResizeRows = false;
       this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Info;
       this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView.Location = new System.Drawing.Point(12, 151);
