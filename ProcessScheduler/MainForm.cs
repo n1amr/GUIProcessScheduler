@@ -65,7 +65,7 @@ namespace ProcessScheduler
       int index = lstBox_Processes.SelectedIndex;
       if (index >= 0)
         lstBox_Processes.Items.RemoveAt(index);
-
+      lstBox_Processes.SelectedIndex = Math.Min(index, lstBox_Processes.Items.Count - 1);
       CheckButtonsStatus();
     }
 
@@ -150,8 +150,7 @@ namespace ProcessScheduler
 
     private void btn_RemoveAll_Click(object sender, EventArgs e)
     {
-      while (lstBox_Processes.Items.Count != 0)
-        lstBox_Processes.Items.RemoveAt(0);
+      lstBox_Processes.Items.Clear();
       CheckButtonsStatus();
     }
 
@@ -169,6 +168,11 @@ namespace ProcessScheduler
     private void lstBox_Processes_SelectedIndexChanged(object sender, EventArgs e)
     {
       CheckButtonsStatus();
+    }
+
+    private void lstBox_Processes_DoubleClick(object sender, EventArgs e)
+    {
+      btn_Edit_Click(sender, e);
     }
   }
 }
