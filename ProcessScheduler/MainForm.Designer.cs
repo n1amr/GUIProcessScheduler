@@ -202,6 +202,7 @@
       this.lstBox_Processes.FormattingEnabled = true;
       this.lstBox_Processes.Location = new System.Drawing.Point(7, 20);
       this.lstBox_Processes.Name = "lstBox_Processes";
+      this.lstBox_Processes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
       this.lstBox_Processes.Size = new System.Drawing.Size(152, 173);
       this.lstBox_Processes.TabIndex = 0;
       this.lstBox_Processes.SelectedIndexChanged += new System.EventHandler(this.lstBox_Processes_SelectedIndexChanged);

@@ -48,8 +48,7 @@ namespace ProcessScheduler
 
     private void btn_Edit_Click(object sender, EventArgs e)
     {
-      int index = lstBox_Processes.SelectedIndex;
-      if (index >= 0)
+      foreach (int index in lstBox_Processes.SelectedIndices)
       {
         Process process = (Process)lstBox_Processes.Items[index];
         EditProcessForm form = new EditProcessForm(process, queue_type == 2);
@@ -62,10 +61,9 @@ namespace ProcessScheduler
 
     private void btn_Remove_Click(object sender, EventArgs e)
     {
-      int index = lstBox_Processes.SelectedIndex;
-      if (index >= 0)
-        lstBox_Processes.Items.RemoveAt(index);
-      lstBox_Processes.SelectedIndex = Math.Min(index, lstBox_Processes.Items.Count - 1);
+      for (int i = lstBox_Processes.SelectedItems.Count - 1; i >= 0; i--)
+        lstBox_Processes.Items.RemoveAt(lstBox_Processes.SelectedIndices[i]);
+
       CheckButtonsStatus();
     }
 
